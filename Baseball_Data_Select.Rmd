@@ -1,0 +1,25 @@
+---
+title: "Baseball Data Select"
+author: "Evan Burns"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+
+baseball_full <- read.csv("~/Desktop/Senior Year Work/Causal Inference/Baseball Data/Baseball_Full_Clean.csv")
+
+#Selects Teams of Interest: Yankees, Dodgers, Red Sox, Cubs, Rays, Royals, Athletics, Marlins
+
+baseball_teams <- subset(baseball_full, Away_Team == "CHN" | Away_Team == "LAN" | Away_Team == "BOS" | Away_Team == "NYA" | Away_Team == "MIA" | Away_Team == "KCA" | Away_Team == "OAK" | Away_Team == "CIN" | Home_Team == "CHN" | Home_Team == "LAN" | Home_Team == "BOS" | Home_Team == "NYA" | Home_Team == "MIA" | Home_Team == "KCA" | Home_Team == "OAK" | Home_Team == "CIN" | Away_Team == "FLO" | Home_Team == "FLO")
+  
+baseball_teams <- subset(baseball_teams, Year != 2020 & Year != 2021)
+
+write_csv(baseball_teams, "~/Desktop/Senior Year Work/Causal Inference/Baseball Data/Baseball_Teams_Clean")
+```
+
