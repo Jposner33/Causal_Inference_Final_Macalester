@@ -32,4 +32,4 @@ format:
 
     Through these experts’ research and our data, we can look into different perspectives surrounding home-field advantage and how it could causally affect winning percentages for large and small market teams.
 
-# Data
+# Data 
