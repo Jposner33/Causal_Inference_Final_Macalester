@@ -52,13 +52,17 @@ for (team in team_names) {
   team_data <- subset(baseball_allmlb_final, Away_Team == team | Home_Team == team)
   team_data <- team_data %>%
     mutate(Home = ifelse(Away_Team == team, 0, 1),
-           !!paste0(team, "_win") := ifelse(Team_Winner == team, 1, 0)
+           !!paste0(team, "_win") := ifelse(Team_Winner == team, 1, 0),
+           Opp_Win_Percentage = ifelse(Home == 1, Away_Win_Percentage, Home_Win_Percentage),
+           Opp_Playoffs = ifelse(Home == 1, Away_Playoffs, Home_Playoffs),
+           Opp_WS = ifelse(Home == 1, Away_WS, Home_WS),
+           Opp_Win_P_Cat = ifelse(Home == 1, Away_Win_P_Cat, Home_Win_P_Cat)
            )
   assign(df_name, team_data)
   ###
-  # file_path <- paste0("~/Desktop/Senior Year Work/Causal Inference/Baseball Data/Team Datasets", "/", df_name, ".csv")
+  # file_path <- paste0("~/Desktop/Senior Year Work/Causal Inference/Clean Data/Team Datasets", "/", df_name, ".csv")
   # write.csv(team_data, file_path, row.names = FALSE)
 }
 
-# write_csv(baseball_allmlb_final, "~/Desktop/Senior Year Work/Causal Inference/Baseball Data/Baseball_allmlb_Clean.csv")
+# write_csv(baseball_allmlb_final, "~/Desktop/Senior Year Work/Causal Inference/Clean Data/Baseball_allmlb_Clean.csv")
 ```
