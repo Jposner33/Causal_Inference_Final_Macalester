@@ -1,0 +1,895 @@
+﻿Team,Team_Abb,Year,Win_Percentage,Playoffs,WS,Win_P_Cat
+Los Angeles Dodgers,LAN,2024,0.605,1,1,Good
+Philadelphia Phillies,PHI,2024,0.586,1,0,Good
+New York Yankees,NYA,2024,0.58,1,0,Good
+Milwaukee Brewers,MIL,2024,0.574,1,0,Good
+San Diego Padres,SDN,2024,0.574,1,0,Good
+Cleveland Guardians,CLE,2024,0.571,1,0,Good
+Baltimore Orioles,BAL,2024,0.562,1,0,Good
+Atlanta Braves,ATL,2024,0.549,1,0,Good
+Arizona Diamondbacks,ARI,2024,0.549,0,0,Good
+New York Mets,NYN,2024,0.549,1,0,Good
+Houston Astros,HOU,2024,0.547,1,0,Good
+Kansas City Royals,KCA,2024,0.531,1,0,Good
+Detroit Tigers,DET,2024,0.531,1,0,Good
+Seattle Mariners,SEA,2024,0.525,0,0,Good
+St. Louis Cardinals,SLN,2024,0.512,0,0,Good
+Chicago Cubs,CHN,2024,0.512,0,0,Good
+Minnesota Twins,MIN,2024,0.506,0,0,Good
+Boston Red Sox,BOS,2024,0.5,0,0,Good
+Tampa Bay Rays,TBA,2024,0.494,0,0,Bad
+San Francisco Giants,SFN,2024,0.494,0,0,Bad
+Texas Rangers,TEX,2024,0.481,0,0,Bad
+Cincinnati Reds,CIN,2024,0.475,0,0,Bad
+Pittsburgh Pirates,PIT,2024,0.469,0,0,Bad
+Toronto Blue Jays,TOR,2024,0.457,0,0,Bad
+Washington Nationals,WAS,2024,0.438,0,0,Bad
+Oakland Athletics,OAK,2024,0.426,0,0,Bad
+Los Angeles Angels,ANA,2024,0.389,0,0,Bad
+Miami Marlins,MIA,2024,0.383,0,0,Bad
+Colorado Rockies,COL,2024,0.377,0,0,Bad
+Chicago White Sox,CHA,2024,0.253,0,0,Terrible
+Atlanta Braves,ATL,2023,0.642,1,0,Great
+Baltimore Orioles,BAL,2023,0.623,1,0,Great
+Los Angeles Dodgers,LAN,2023,0.617,1,0,Great
+Tampa Bay Rays,TBA,2023,0.611,1,0,Good
+Milwaukee Brewers,MIL,2023,0.568,1,0,Good
+Houston Astros,HOU,2023,0.556,1,0,Good
+Philadelphia Phillies,PHI,2023,0.556,1,0,Good
+Texas Rangers,TEX,2023,0.556,1,1,Good
+Toronto Blue Jays,TOR,2023,0.549,1,0,Good
+Seattle Mariners,SEA,2023,0.543,0,0,Good
+Minnesota Twins,MIN,2023,0.537,1,0,Good
+Arizona Diamondbacks,ARI,2023,0.519,1,0,Good
+Miami Marlins,MIA,2023,0.519,1,0,Good
+Chicago Cubs,CHN,2023,0.512,0,0,Good
+San Diego Padres,SDN,2023,0.506,0,0,Good
+Cincinnati Reds,CIN,2023,0.506,0,0,Good
+New York Yankees,NYA,2023,0.506,0,0,Good
+San Francisco Giants,SFN,2023,0.488,0,0,Bad
+Detroit Tigers,DET,2023,0.481,0,0,Bad
+Boston Red Sox,BOS,2023,0.481,0,0,Bad
+Cleveland Guardians,CLE,2023,0.469,0,0,Bad
+Pittsburgh Pirates,PIT,2023,0.469,0,0,Bad
+New York Mets,NYN,2023,0.463,0,0,Bad
+Los Angeles Angels,ANA,2023,0.451,0,0,Bad
+St. Louis Cardinals,SLN,2023,0.438,0,0,Bad
+Washington Nationals,WAS,2023,0.438,0,0,Bad
+Chicago White Sox,CHA,2023,0.377,0,0,Bad
+Colorado Rockies,COL,2023,0.364,0,0,Terrible
+Kansas City Royals,KCA,2023,0.346,0,0,Terrible
+Oakland Athletics,OAK,2023,0.309,0,0,Terrible
+Los Angeles Dodgers,LAN,2022,0.685,1,0,Great
+Houston Astros,HOU,2022,0.654,1,1,Great
+Atlanta Braves,ATL,2022,0.623,1,0,Great
+New York Mets,NYN,2022,0.623,1,0,Great
+New York Yankees,NYA,2022,0.611,1,0,Good
+St. Louis Cardinals,SLN,2022,0.574,1,0,Good
+Cleveland Guardians,CLE,2022,0.568,1,0,Good
+Toronto Blue Jays,TOR,2022,0.568,1,0,Good
+Seattle Mariners,SEA,2022,0.556,1,0,Good
+San Diego Padres,SDN,2022,0.549,1,0,Good
+Philadelphia Phillies,PHI,2022,0.537,1,0,Good
+Milwaukee Brewers,MIL,2022,0.531,0,0,Good
+Tampa Bay Rays,TBA,2022,0.531,1,0,Good
+Baltimore Orioles,BAL,2022,0.512,0,0,Good
+Chicago White Sox,CHA,2022,0.5,0,0,Good
+San Francisco Giants,SFN,2022,0.5,0,0,Good
+Minnesota Twins,MIN,2022,0.481,0,0,Bad
+Boston Red Sox,BOS,2022,0.481,0,0,Bad
+Chicago Cubs,CHN,2022,0.457,0,0,Bad
+Arizona Diamondbacks,ARI,2022,0.457,0,0,Bad
+Los Angeles Angels,ANA,2022,0.451,0,0,Bad
+Miami Marlins,MIA,2022,0.426,0,0,Bad
+Texas Rangers,TEX,2022,0.42,0,0,Bad
+Colorado Rockies,COL,2022,0.42,0,0,Bad
+Detroit Tigers,DET,2022,0.407,0,0,Bad
+Kansas City Royals,KCA,2022,0.401,0,0,Bad
+Pittsburgh Pirates,PIT,2022,0.383,0,0,Bad
+Cincinnati Reds,CIN,2022,0.383,0,0,Bad
+Oakland Athletics,OAK,2022,0.37,0,0,Terrible
+Washington Nationals,WAS,2022,0.34,0,0,Terrible
+San Francisco Giants,SFN,2021,0.66,1,0,Great
+Los Angeles Dodgers,LAN,2021,0.654,1,0,Great
+Tampa Bay Rays,TBA,2021,0.617,1,0,Great
+Milwaukee Brewers,MIL,2021,0.586,1,0,Good
+Houston Astros,HOU,2021,0.586,1,0,Good
+Chicago White Sox,CHA,2021,0.574,1,0,Good
+Boston Red Sox,BOS,2021,0.568,1,0,Good
+New York Yankees,NYA,2021,0.568,1,0,Good
+Toronto Blue Jays,TOR,2021,0.562,0,0,Good
+St. Louis Cardinals,SLN,2021,0.556,1,0,Good
+Seattle Mariners,SEA,2021,0.556,0,0,Good
+Atlanta Braves,ATL,2021,0.547,1,1,Good
+Oakland Athletics,OAK,2021,0.531,0,0,Good
+Cincinnati Reds,CIN,2021,0.512,0,0,Good
+Philadelphia Phillies,PHI,2021,0.506,0,0,Good
+Cleveland Indians,CLE,2021,0.494,0,0,Bad
+San Diego Padres,SDN,2021,0.488,0,0,Bad
+Detroit Tigers,DET,2021,0.475,0,0,Bad
+New York Mets,NYN,2021,0.475,0,0,Bad
+Los Angeles Angels,ANA,2021,0.475,0,0,Bad
+Colorado Rockies,COL,2021,0.46,0,0,Bad
+Kansas City Royals,KCA,2021,0.457,0,0,Bad
+Minnesota Twins,MIN,2021,0.451,0,0,Bad
+Chicago Cubs,CHN,2021,0.438,0,0,Bad
+Miami Marlins,MIA,2021,0.414,0,0,Bad
+Washington Nationals,WAS,2021,0.401,0,0,Bad
+Pittsburgh Pirates,PIT,2021,0.377,0,0,Bad
+Texas Rangers,TEX,2021,0.37,0,0,Terrible
+Baltimore Orioles,BAL,2021,0.321,0,0,Terrible
+Arizona Diamondbacks,ARI,2021,0.321,0,0,Terrible
+Los Angeles Dodgers,LAN,2020,0.717,1,1,Great
+Tampa Bay Rays,TBA,2020,0.667,1,0,Great
+San Diego Padres,SDN,2020,0.617,1,0,Great
+Minnesota Twins,MIN,2020,0.6,1,0,Good
+Oakland Athletics,OAK,2020,0.6,1,0,Good
+Atlanta Braves,ATL,2020,0.583,1,0,Good
+Cleveland Indians,CLE,2020,0.583,1,0,Good
+Chicago White Sox,CHA,2020,0.583,1,0,Good
+Chicago Cubs,CHN,2020,0.567,1,0,Good
+New York Yankees,NYA,2020,0.55,1,0,Good
+Toronto Blue Jays,TOR,2020,0.533,1,0,Good
+St. Louis Cardinals,SLN,2020,0.517,1,0,Good
+Miami Marlins,MIA,2020,0.517,1,0,Good
+Cincinnati Reds,CIN,2020,0.517,1,0,Good
+Houston Astros,HOU,2020,0.483,1,0,Bad
+San Francisco Giants,SFN,2020,0.483,0,0,Bad
+Milwaukee Brewers,MIL,2020,0.483,1,0,Bad
+Philadelphia Phillies,PHI,2020,0.467,0,0,Bad
+Seattle Mariners,SEA,2020,0.45,0,0,Bad
+New York Mets,NYN,2020,0.433,0,0,Bad
+Los Angeles Angels,ANA,2020,0.433,0,0,Bad
+Kansas City Royals,KCA,2020,0.433,0,0,Bad
+Colorado Rockies,COL,2020,0.433,0,0,Bad
+Washington Nationals,WAS,2020,0.433,0,0,Bad
+Baltimore Orioles,BAL,2020,0.417,0,0,Bad
+Arizona Diamondbacks,ARI,2020,0.417,0,0,Bad
+Boston Red Sox,BOS,2020,0.4,0,0,Bad
+Detroit Tigers,DET,2020,0.397,0,0,Bad
+Texas Rangers,TEX,2020,0.367,0,0,Terrible
+Pittsburgh Pirates,PIT,2020,0.317,0,0,Terrible
+Houston Astros,HOU,2019,0.66,1,0,Great
+Los Angeles Dodgers,LAN,2019,0.654,1,0,Great
+New York Yankees,NYA,2019,0.636,1,0,Great
+Minnesota Twins,MIN,2019,0.623,1,0,Great
+Atlanta Braves,ATL,2019,0.599,1,0,Good
+Oakland Athletics,OAK,2019,0.599,1,0,Good
+Tampa Bay Rays,TBA,2019,0.593,1,0,Good
+Washington Nationals,WAS,2019,0.574,1,1,Good
+Cleveland Indians,CLE,2019,0.574,0,0,Good
+St. Louis Cardinals,SLN,2019,0.562,1,0,Good
+Milwaukee Brewers,MIL,2019,0.549,0,0,Good
+New York Mets,NYN,2019,0.531,0,0,Good
+Arizona Diamondbacks,ARI,2019,0.525,0,0,Good
+Boston Red Sox,BOS,2019,0.519,0,0,Good
+Chicago Cubs,CHN,2019,0.519,0,0,Good
+Philadelphia Phillies,PHI,2019,0.5,0,0,Good
+Texas Rangers,TEX,2019,0.481,0,0,Bad
+San Francisco Giants,SFN,2019,0.475,0,0,Bad
+Cincinnati Reds,CIN,2019,0.463,0,0,Bad
+Chicago White Sox,CHA,2019,0.447,0,0,Bad
+Los Angeles Angels,ANA,2019,0.444,0,0,Bad
+Colorado Rockies,COL,2019,0.438,0,0,Bad
+San Diego Padres,SDN,2019,0.432,0,0,Bad
+Pittsburgh Pirates,PIT,2019,0.426,0,0,Bad
+Seattle Mariners,SEA,2019,0.42,0,0,Bad
+Toronto Blue Jays,TOR,2019,0.414,0,0,Bad
+Kansas City Royals,KCA,2019,0.364,0,0,Terrible
+Miami Marlins,MIA,2019,0.352,0,0,Terrible
+Baltimore Orioles,BAL,2019,0.333,0,0,Terrible
+Detroit Tigers,DET,2019,0.292,0,0,Terrible
+Boston Red Sox,BOS,2018,0.667,1,1,Great
+Houston Astros,HOU,2018,0.636,1,0,Great
+New York Yankees,NYA,2018,0.617,1,0,Great
+Oakland Athletics,OAK,2018,0.599,1,0,Good
+Milwaukee Brewers,MIL,2018,0.589,1,0,Good
+Chicago Cubs,CHN,2018,0.583,1,0,Good
+Los Angeles Dodgers,LAN,2018,0.564,1,0,Good
+Cleveland Indians,CLE,2018,0.562,1,0,Good
+Colorado Rockies,COL,2018,0.558,1,0,Good
+Atlanta Braves,ATL,2018,0.556,1,0,Good
+Tampa Bay Rays,TBA,2018,0.556,0,0,Good
+Seattle Mariners,SEA,2018,0.549,0,0,Good
+St. Louis Cardinals,SLN,2018,0.543,0,0,Good
+Pittsburgh Pirates,PIT,2018,0.509,0,0,Good
+Washington Nationals,WAS,2018,0.506,0,0,Good
+Arizona Diamondbacks,ARI,2018,0.506,0,0,Good
+Philadelphia Phillies,PHI,2018,0.494,0,0,Bad
+Los Angeles Angels,ANA,2018,0.494,0,0,Bad
+Minnesota Twins,MIN,2018,0.481,0,0,Bad
+New York Mets,NYN,2018,0.475,0,0,Bad
+San Francisco Giants,SFN,2018,0.451,0,0,Bad
+Toronto Blue Jays,TOR,2018,0.451,0,0,Bad
+Cincinnati Reds,CIN,2018,0.414,0,0,Bad
+Texas Rangers,TEX,2018,0.414,0,0,Bad
+San Diego Padres,SDN,2018,0.407,0,0,Bad
+Detroit Tigers,DET,2018,0.395,0,0,Bad
+Miami Marlins,MIA,2018,0.391,0,0,Bad
+Chicago White Sox,CHA,2018,0.383,0,0,Bad
+Kansas City Royals,KCA,2018,0.358,0,0,Terrible
+Baltimore Orioles,BAL,2018,0.29,0,0,Terrible
+Los Angeles Dodgers,LAN,2017,0.642,1,0,Great
+Cleveland Indians,CLE,2017,0.63,1,0,Great
+Houston Astros,HOU,2017,0.623,1,1,Great
+Washington Nationals,WAS,2017,0.599,1,0,Good
+Boston Red Sox,BOS,2017,0.574,1,0,Good
+Arizona Diamondbacks,ARI,2017,0.574,1,0,Good
+Chicago Cubs,CHN,2017,0.568,1,0,Good
+New York Yankees,NYA,2017,0.562,1,0,Good
+Colorado Rockies,COL,2017,0.537,1,0,Good
+Milwaukee Brewers,MIL,2017,0.531,0,0,Good
+Minnesota Twins,MIN,2017,0.525,1,0,Good
+St. Louis Cardinals,SLN,2017,0.512,0,0,Good
+Los Angeles Angels,ANA,2017,0.494,0,0,Bad
+Kansas City Royals,KCA,2017,0.494,0,0,Bad
+Tampa Bay Rays,TBA,2017,0.494,0,0,Bad
+Texas Rangers,TEX,2017,0.481,0,0,Bad
+Seattle Mariners,SEA,2017,0.481,0,0,Bad
+Miami Marlins,MIA,2017,0.475,0,0,Bad
+Toronto Blue Jays,TOR,2017,0.469,0,0,Bad
+Pittsburgh Pirates,PIT,2017,0.463,0,0,Bad
+Baltimore Orioles,BAL,2017,0.463,0,0,Bad
+Oakland Athletics,OAK,2017,0.463,0,0,Bad
+Atlanta Braves,ATL,2017,0.444,0,0,Bad
+San Diego Padres,SDN,2017,0.438,0,0,Bad
+New York Mets,NYN,2017,0.432,0,0,Bad
+Cincinnati Reds,CIN,2017,0.42,0,0,Bad
+Chicago White Sox,CHA,2017,0.414,0,0,Bad
+Philadelphia Phillies,PHI,2017,0.407,0,0,Bad
+San Francisco Giants,SFN,2017,0.395,0,0,Bad
+Detroit Tigers,DET,2017,0.395,0,0,Bad
+Chicago Cubs,CHN,2016,0.64,1,1,Great
+Washington Nationals,WAS,2016,0.586,1,0,Good
+Texas Rangers,TEX,2016,0.586,1,0,Good
+Cleveland Indians,CLE,2016,0.584,1,0,Good
+Boston Red Sox,BOS,2016,0.574,1,0,Good
+Los Angeles Dodgers,LAN,2016,0.562,1,0,Good
+Baltimore Orioles,BAL,2016,0.549,1,0,Good
+Toronto Blue Jays,TOR,2016,0.549,1,0,Good
+San Francisco Giants,SFN,2016,0.537,1,0,Good
+New York Mets,NYN,2016,0.537,1,0,Good
+Detroit Tigers,DET,2016,0.534,0,0,Good
+Seattle Mariners,SEA,2016,0.531,0,0,Good
+St. Louis Cardinals,SLN,2016,0.531,0,0,Good
+Houston Astros,HOU,2016,0.519,0,0,Good
+New York Yankees,NYA,2016,0.519,0,0,Good
+Kansas City Royals,KCA,2016,0.5,0,0,Good
+Miami Marlins,MIA,2016,0.491,0,0,Bad
+Pittsburgh Pirates,PIT,2016,0.484,0,0,Bad
+Chicago White Sox,CHA,2016,0.481,0,0,Bad
+Colorado Rockies,COL,2016,0.463,0,0,Bad
+Los Angeles Angels,ANA,2016,0.457,0,0,Bad
+Milwaukee Brewers,MIL,2016,0.451,0,0,Bad
+Philadelphia Phillies,PHI,2016,0.438,0,0,Bad
+Arizona Diamondbacks,ARI,2016,0.426,0,0,Bad
+Oakland Athletics,OAK,2016,0.426,0,0,Bad
+Atlanta Braves,ATL,2016,0.422,0,0,Bad
+San Diego Padres,SDN,2016,0.42,0,0,Bad
+Tampa Bay Rays,TBA,2016,0.42,0,0,Bad
+Cincinnati Reds,CIN,2016,0.42,0,0,Bad
+Minnesota Twins,MIN,2016,0.364,0,0,Terrible
+St. Louis Cardinals,SLN,2015,0.617,1,0,Great
+Pittsburgh Pirates,PIT,2015,0.605,1,0,Good
+Chicago Cubs,CHN,2015,0.599,1,0,Good
+Kansas City Royals,KCA,2015,0.586,1,1,Good
+Toronto Blue Jays,TOR,2015,0.574,1,0,Good
+Los Angeles Dodgers,LAN,2015,0.568,1,0,Good
+New York Mets,NYN,2015,0.556,1,0,Good
+Texas Rangers,TEX,2015,0.543,1,0,Good
+New York Yankees,NYA,2015,0.537,1,0,Good
+Houston Astros,HOU,2015,0.531,1,0,Good
+Los Angeles Angels of Anaheim,ANA,2015,0.525,0,0,Good
+San Francisco Giants,SFN,2015,0.519,0,0,Good
+Minnesota Twins,MIN,2015,0.512,0,0,Good
+Washington Nationals,WAS,2015,0.512,0,0,Good
+Cleveland Indians,CLE,2015,0.503,0,0,Good
+Baltimore Orioles,BAL,2015,0.5,0,0,Good
+Tampa Bay Rays,TBA,2015,0.494,0,0,Bad
+Arizona Diamondbacks,ARI,2015,0.488,0,0,Bad
+Boston Red Sox,BOS,2015,0.481,0,0,Bad
+Chicago White Sox,CHA,2015,0.469,0,0,Bad
+Seattle Mariners,SEA,2015,0.469,0,0,Bad
+Detroit Tigers,DET,2015,0.46,0,0,Bad
+San Diego Padres,SDN,2015,0.457,0,0,Bad
+Miami Marlins,MIA,2015,0.438,0,0,Bad
+Milwaukee Brewers,MIL,2015,0.42,0,0,Bad
+Oakland Athletics,OAK,2015,0.42,0,0,Bad
+Colorado Rockies,COL,2015,0.42,0,0,Bad
+Atlanta Braves,ATL,2015,0.414,0,0,Bad
+Cincinnati Reds,CIN,2015,0.395,0,0,Bad
+Philadelphia Phillies,PHI,2015,0.389,0,0,Bad
+Los Angeles Angels of Anaheim,ANA,2014,0.605,1,0,Good
+Washington Nationals,WAS,2014,0.593,1,0,Good
+Baltimore Orioles,BAL,2014,0.593,1,0,Good
+Los Angeles Dodgers,LAN,2014,0.58,1,0,Good
+St. Louis Cardinals,SLN,2014,0.556,1,0,Good
+Detroit Tigers,DET,2014,0.556,1,0,Good
+Kansas City Royals,KCA,2014,0.549,1,0,Good
+San Francisco Giants,SFN,2014,0.543,1,1,Good
+Pittsburgh Pirates,PIT,2014,0.543,1,0,Good
+Oakland Athletics,OAK,2014,0.543,1,0,Good
+Seattle Mariners,SEA,2014,0.537,0,0,Good
+Cleveland Indians,CLE,2014,0.525,0,0,Good
+New York Yankees,NYA,2014,0.519,0,0,Good
+Toronto Blue Jays,TOR,2014,0.512,0,0,Good
+Milwaukee Brewers,MIL,2014,0.506,0,0,Good
+New York Mets,NYN,2014,0.488,0,0,Bad
+Atlanta Braves,ATL,2014,0.488,0,0,Bad
+San Diego Padres,SDN,2014,0.475,0,0,Bad
+Miami Marlins,MIA,2014,0.475,0,0,Bad
+Tampa Bay Rays,TBA,2014,0.475,0,0,Bad
+Cincinnati Reds,CIN,2014,0.469,0,0,Bad
+Chicago White Sox,CHA,2014,0.451,0,0,Bad
+Philadelphia Phillies,PHI,2014,0.451,0,0,Bad
+Chicago Cubs,CHN,2014,0.451,0,0,Bad
+Boston Red Sox,BOS,2014,0.438,0,0,Bad
+Houston Astros,HOU,2014,0.432,0,0,Bad
+Minnesota Twins,MIN,2014,0.432,0,0,Bad
+Texas Rangers,TEX,2014,0.414,0,0,Bad
+Colorado Rockies,COL,2014,0.407,0,0,Bad
+Arizona Diamondbacks,ARI,2014,0.395,0,0,Bad
+Boston Red Sox,BOS,2013,0.599,1,1,Good
+St. Louis Cardinals,SLN,2013,0.599,1,0,Good
+Atlanta Braves,ATL,2013,0.593,1,0,Good
+Oakland Athletics,OAK,2013,0.593,1,0,Good
+Pittsburgh Pirates,PIT,2013,0.58,1,0,Good
+Detroit Tigers,DET,2013,0.574,1,0,Good
+Los Angeles Dodgers,LAN,2013,0.568,1,0,Good
+Cleveland Indians,CLE,2013,0.568,1,0,Good
+Tampa Bay Rays,TBA,2013,0.564,1,0,Good
+Texas Rangers,TEX,2013,0.558,0,0,Good
+Cincinnati Reds,CIN,2013,0.556,1,0,Good
+Washington Nationals,WAS,2013,0.531,0,0,Good
+Kansas City Royals,KCA,2013,0.531,0,0,Good
+Baltimore Orioles,BAL,2013,0.525,0,0,Good
+New York Yankees,NYA,2013,0.525,0,0,Good
+Arizona Diamondbacks,ARI,2013,0.5,0,0,Good
+Los Angeles Angels of Anaheim,ANA,2013,0.481,0,0,Bad
+San Diego Padres,SDN,2013,0.469,0,0,Bad
+San Francisco Giants,SFN,2013,0.469,0,0,Bad
+New York Mets,NYN,2013,0.457,0,0,Bad
+Milwaukee Brewers,MIL,2013,0.457,0,0,Bad
+Colorado Rockies,COL,2013,0.457,0,0,Bad
+Toronto Blue Jays,TOR,2013,0.457,0,0,Bad
+Philadelphia Phillies,PHI,2013,0.451,0,0,Bad
+Seattle Mariners,SEA,2013,0.438,0,0,Bad
+Minnesota Twins,MIN,2013,0.407,0,0,Bad
+Chicago Cubs,CHN,2013,0.407,0,0,Bad
+Chicago White Sox,CHA,2013,0.389,0,0,Bad
+Miami Marlins,MIA,2013,0.383,0,0,Bad
+Houston Astros,HOU,2013,0.315,0,0,Terrible
+Washington Nationals,WAS,2012,0.605,1,0,Good
+Cincinnati Reds,CIN,2012,0.599,1,0,Good
+New York Yankees,NYA,2012,0.586,1,0,Good
+San Francisco Giants,SFN,2012,0.58,1,1,Good
+Oakland Athletics,OAK,2012,0.58,1,0,Good
+Atlanta Braves,ATL,2012,0.58,1,0,Good
+Baltimore Orioles,BAL,2012,0.574,1,0,Good
+Texas Rangers,TEX,2012,0.574,1,0,Good
+Tampa Bay Rays,TBA,2012,0.556,0,0,Good
+Los Angeles Angels of Anaheim,ANA,2012,0.549,0,0,Good
+Detroit Tigers,DET,2012,0.543,1,0,Good
+St. Louis Cardinals,SLN,2012,0.543,1,0,Good
+Los Angeles Dodgers,LAN,2012,0.531,0,0,Good
+Chicago White Sox,CHA,2012,0.525,0,0,Good
+Milwaukee Brewers,MIL,2012,0.512,0,0,Good
+Arizona Diamondbacks,ARI,2012,0.5,0,0,Good
+Philadelphia Phillies,PHI,2012,0.5,0,0,Good
+Pittsburgh Pirates,PIT,2012,0.488,0,0,Bad
+San Diego Padres,SDN,2012,0.469,0,0,Bad
+Seattle Mariners,SEA,2012,0.463,0,0,Bad
+New York Mets,NYN,2012,0.457,0,0,Bad
+Toronto Blue Jays,TOR,2012,0.451,0,0,Bad
+Kansas City Royals,KCA,2012,0.444,0,0,Bad
+Miami Marlins,MIA,2012,0.426,0,0,Bad
+Boston Red Sox,BOS,2012,0.426,0,0,Bad
+Cleveland Indians,CLE,2012,0.42,0,0,Bad
+Minnesota Twins,MIN,2012,0.407,0,0,Bad
+Colorado Rockies,COL,2012,0.395,0,0,Bad
+Chicago Cubs,CHN,2012,0.377,0,0,Bad
+Houston Astros,HOU,2012,0.34,0,0,Terrible
+Philadelphia Phillies,PHI,2011,0.63,1,0,Great
+New York Yankees,NYA,2011,0.599,1,0,Good
+Texas Rangers,TEX,2011,0.593,1,0,Good
+Milwaukee Brewers,MIL,2011,0.593,1,0,Good
+Detroit Tigers,DET,2011,0.586,1,0,Good
+Arizona Diamondbacks,ARI,2011,0.58,1,0,Good
+Tampa Bay Rays,TBA,2011,0.562,1,0,Good
+St. Louis Cardinals,SLN,2011,0.556,1,1,Good
+Boston Red Sox,BOS,2011,0.556,0,0,Good
+Atlanta Braves,ATL,2011,0.549,0,0,Good
+Los Angeles Angels of Anaheim,ANA,2011,0.531,0,0,Good
+San Francisco Giants,SFN,2011,0.531,0,0,Good
+Los Angeles Dodgers,LAN,2011,0.509,0,0,Good
+Toronto Blue Jays,TOR,2011,0.5,0,0,Good
+Washington Nationals,WAS,2011,0.497,0,0,Bad
+Cleveland Indians,CLE,2011,0.494,0,0,Bad
+Cincinnati Reds,CIN,2011,0.488,0,0,Bad
+Chicago White Sox,CHA,2011,0.488,0,0,Bad
+New York Mets,NYN,2011,0.475,0,0,Bad
+Oakland Athletics,OAK,2011,0.457,0,0,Bad
+Colorado Rockies,COL,2011,0.451,0,0,Bad
+Pittsburgh Pirates,PIT,2011,0.444,0,0,Bad
+Florida Marlins,MIA,2011,0.444,0,0,Bad
+Kansas City Royals,KCA,2011,0.438,0,0,Bad
+San Diego Padres,SDN,2011,0.438,0,0,Bad
+Chicago Cubs,CHN,2011,0.438,0,0,Bad
+Baltimore Orioles,BAL,2011,0.426,0,0,Bad
+Seattle Mariners,SEA,2011,0.414,0,0,Bad
+Minnesota Twins,MIN,2011,0.389,0,0,Bad
+Houston Astros,HOU,2011,0.346,0,0,Terrible
+Philadelphia Phillies,PHI,2010,0.599,1,0,Good
+Tampa Bay Rays,TBA,2010,0.593,1,0,Good
+New York Yankees,NYA,2010,0.586,1,0,Good
+Minnesota Twins,MIN,2010,0.58,1,0,Good
+San Francisco Giants,SFN,2010,0.568,1,1,Good
+Cincinnati Reds,CIN,2010,0.562,1,0,Good
+Atlanta Braves,ATL,2010,0.562,1,0,Good
+Texas Rangers,TEX,2010,0.556,1,0,Good
+San Diego Padres,SDN,2010,0.556,0,0,Good
+Boston Red Sox,BOS,2010,0.549,0,0,Good
+Chicago White Sox,CHA,2010,0.543,0,0,Good
+St. Louis Cardinals,SLN,2010,0.531,0,0,Good
+Toronto Blue Jays,TOR,2010,0.525,0,0,Good
+Colorado Rockies,COL,2010,0.512,0,0,Good
+Oakland Athletics,OAK,2010,0.5,0,0,Good
+Detroit Tigers,DET,2010,0.5,0,0,Good
+Florida Marlins,MIA,2010,0.494,0,0,Bad
+Los Angeles Angels of Anaheim,ANA,2010,0.494,0,0,Bad
+Los Angeles Dodgers,LAN,2010,0.494,0,0,Bad
+New York Mets,NYN,2010,0.488,0,0,Bad
+Milwaukee Brewers,MIL,2010,0.475,0,0,Bad
+Houston Astros,HOU,2010,0.469,0,0,Bad
+Chicago Cubs,CHN,2010,0.463,0,0,Bad
+Cleveland Indians,CLE,2010,0.426,0,0,Bad
+Washington Nationals,WAS,2010,0.426,0,0,Bad
+Kansas City Royals,KCA,2010,0.414,0,0,Bad
+Baltimore Orioles,BAL,2010,0.407,0,0,Bad
+Arizona Diamondbacks,ARI,2010,0.401,0,0,Bad
+Seattle Mariners,SEA,2010,0.377,0,0,Bad
+Pittsburgh Pirates,PIT,2010,0.352,0,0,Terrible
+New York Yankees,NYA,2009,0.636,1,1,Great
+Los Angeles Angels of Anaheim,ANA,2009,0.599,1,0,Good
+Los Angeles Dodgers,LAN,2009,0.586,1,0,Good
+Boston Red Sox,BOS,2009,0.586,1,0,Good
+Philadelphia Phillies,PHI,2009,0.574,1,0,Good
+Colorado Rockies,COL,2009,0.568,1,0,Good
+St. Louis Cardinals,SLN,2009,0.562,1,0,Good
+San Francisco Giants,SFN,2009,0.543,0,0,Good
+Texas Rangers,TEX,2009,0.537,0,0,Good
+Florida Marlins,MIA,2009,0.537,0,0,Good
+Minnesota Twins,MIN,2009,0.534,1,0,Good
+Atlanta Braves,ATL,2009,0.531,0,0,Good
+Detroit Tigers,DET,2009,0.528,0,0,Good
+Seattle Mariners,SEA,2009,0.525,0,0,Good
+Tampa Bay Rays,TBA,2009,0.519,0,0,Good
+Chicago Cubs,CHN,2009,0.516,0,0,Good
+Milwaukee Brewers,MIL,2009,0.494,0,0,Bad
+Chicago White Sox,CHA,2009,0.488,0,0,Bad
+Cincinnati Reds,CIN,2009,0.481,0,0,Bad
+Oakland Athletics,OAK,2009,0.463,0,0,Bad
+San Diego Padres,SDN,2009,0.463,0,0,Bad
+Toronto Blue Jays,TOR,2009,0.463,0,0,Bad
+Houston Astros,HOU,2009,0.457,0,0,Bad
+New York Mets,NYN,2009,0.432,0,0,Bad
+Arizona Diamondbacks,ARI,2009,0.432,0,0,Bad
+Kansas City Royals,KCA,2009,0.401,0,0,Bad
+Cleveland Indians,CLE,2009,0.401,0,0,Bad
+Baltimore Orioles,BAL,2009,0.395,0,0,Bad
+Pittsburgh Pirates,PIT,2009,0.385,0,0,Bad
+Washington Nationals,WAS,2009,0.364,0,0,Terrible
+Los Angeles Angels of Anaheim,ANA,2008,0.617,1,0,Great
+Chicago Cubs,CHN,2008,0.602,1,0,Good
+Tampa Bay Rays,TBA,2008,0.599,1,0,Good
+Boston Red Sox,BOS,2008,0.586,1,0,Good
+Philadelphia Phillies,PHI,2008,0.568,1,1,Good
+Milwaukee Brewers,MIL,2008,0.556,1,0,Good
+New York Mets,NYN,2008,0.549,0,0,Good
+New York Yankees,NYA,2008,0.549,0,0,Good
+Chicago White Sox,CHA,2008,0.546,1,0,Good
+Minnesota Twins,MIN,2008,0.54,0,0,Good
+Houston Astros,HOU,2008,0.534,0,0,Good
+St. Louis Cardinals,SLN,2008,0.531,0,0,Good
+Toronto Blue Jays,TOR,2008,0.531,0,0,Good
+Florida Marlins,MIA,2008,0.522,0,0,Good
+Los Angeles Dodgers,LAN,2008,0.519,0,0,Good
+Arizona Diamondbacks,ARI,2008,0.506,0,0,Good
+Cleveland Indians,CLE,2008,0.5,0,0,Good
+Texas Rangers,TEX,2008,0.488,0,0,Bad
+Oakland Athletics,OAK,2008,0.466,0,0,Bad
+Kansas City Royals,KCA,2008,0.463,0,0,Bad
+Colorado Rockies,COL,2008,0.457,0,0,Bad
+Detroit Tigers,DET,2008,0.457,0,0,Bad
+Cincinnati Reds,CIN,2008,0.457,0,0,Bad
+Atlanta Braves,ATL,2008,0.444,0,0,Bad
+San Francisco Giants,SFN,2008,0.444,0,0,Bad
+Baltimore Orioles,BAL,2008,0.422,0,0,Bad
+Pittsburgh Pirates,PIT,2008,0.414,0,0,Bad
+San Diego Padres,SDN,2008,0.389,0,0,Bad
+Seattle Mariners,SEA,2008,0.377,0,0,Bad
+Washington Nationals,WAS,2008,0.366,0,0,Terrible
+Boston Red Sox,BOS,2007,0.593,1,1,Good
+Cleveland Indians,CLE,2007,0.593,1,0,Good
+Los Angeles Angels of Anaheim,ANA,2007,0.58,1,0,Good
+New York Yankees,NYA,2007,0.58,1,0,Good
+Arizona Diamondbacks,ARI,2007,0.556,1,0,Good
+Colorado Rockies,COL,2007,0.552,1,0,Good
+Philadelphia Phillies,PHI,2007,0.549,1,0,Good
+San Diego Padres,SDN,2007,0.546,0,0,Good
+Seattle Mariners,SEA,2007,0.543,0,0,Good
+Detroit Tigers,DET,2007,0.543,0,0,Good
+New York Mets,NYN,2007,0.543,0,0,Good
+Chicago Cubs,CHN,2007,0.525,1,0,Good
+Atlanta Braves,ATL,2007,0.519,0,0,Good
+Milwaukee Brewers,MIL,2007,0.512,0,0,Good
+Toronto Blue Jays,TOR,2007,0.512,0,0,Good
+Los Angeles Dodgers,LAN,2007,0.506,0,0,Good
+Minnesota Twins,MIN,2007,0.488,0,0,Bad
+St. Louis Cardinals,SLN,2007,0.481,0,0,Bad
+Oakland Athletics,OAK,2007,0.469,0,0,Bad
+Texas Rangers,TEX,2007,0.463,0,0,Bad
+Houston Astros,HOU,2007,0.451,0,0,Bad
+Washington Nationals,WAS,2007,0.451,0,0,Bad
+Chicago White Sox,CHA,2007,0.444,0,0,Bad
+Cincinnati Reds,CIN,2007,0.444,0,0,Bad
+Florida Marlins,MIA,2007,0.438,0,0,Bad
+San Francisco Giants,SFN,2007,0.438,0,0,Bad
+Baltimore Orioles,BAL,2007,0.426,0,0,Bad
+Kansas City Royals,KCA,2007,0.426,0,0,Bad
+Pittsburgh Pirates,PIT,2007,0.42,0,0,Bad
+Tampa Bay Devil Rays,TBA,2007,0.407,0,0,Bad
+New York Mets,NYN,2006,0.599,1,0,Good
+New York Yankees,NYA,2006,0.599,1,0,Good
+Minnesota Twins,MIN,2006,0.593,1,0,Good
+Detroit Tigers,DET,2006,0.586,1,0,Good
+Oakland Athletics,OAK,2006,0.574,1,0,Good
+Chicago White Sox,CHA,2006,0.556,0,0,Good
+Los Angeles Angels of Anaheim,ANA,2006,0.549,0,0,Good
+San Diego Padres,SDN,2006,0.543,1,0,Good
+Los Angeles Dodgers,LAN,2006,0.543,1,0,Good
+Toronto Blue Jays,TOR,2006,0.537,0,0,Good
+Boston Red Sox,BOS,2006,0.531,0,0,Good
+Philadelphia Phillies,PHI,2006,0.525,0,0,Good
+St. Louis Cardinals,SLN,2006,0.516,1,1,Good
+Houston Astros,HOU,2006,0.506,0,0,Good
+Cincinnati Reds,CIN,2006,0.494,0,0,Bad
+Texas Rangers,TEX,2006,0.494,0,0,Bad
+Atlanta Braves,ATL,2006,0.488,0,0,Bad
+Florida Marlins,MIA,2006,0.481,0,0,Bad
+Cleveland Indians,CLE,2006,0.481,0,0,Bad
+Seattle Mariners,SEA,2006,0.481,0,0,Bad
+San Francisco Giants,SFN,2006,0.472,0,0,Bad
+Arizona Diamondbacks,ARI,2006,0.469,0,0,Bad
+Colorado Rockies,COL,2006,0.469,0,0,Bad
+Milwaukee Brewers,MIL,2006,0.463,0,0,Bad
+Washington Nationals,WAS,2006,0.438,0,0,Bad
+Baltimore Orioles,BAL,2006,0.432,0,0,Bad
+Pittsburgh Pirates,PIT,2006,0.414,0,0,Bad
+Chicago Cubs,CHN,2006,0.407,0,0,Bad
+Kansas City Royals,KCA,2006,0.383,0,0,Bad
+Tampa Bay Devil Rays,TBA,2006,0.377,0,0,Bad
+St. Louis Cardinals,SLN,2005,0.617,1,0,Great
+Chicago White Sox,CHA,2005,0.611,1,1,Good
+New York Yankees,NYA,2005,0.586,1,0,Good
+Los Angeles Angels of Anaheim,ANA,2005,0.586,1,0,Good
+Boston Red Sox,BOS,2005,0.586,1,0,Good
+Cleveland Indians,CLE,2005,0.574,0,0,Good
+Atlanta Braves,ATL,2005,0.556,1,0,Good
+Houston Astros,HOU,2005,0.549,1,0,Good
+Philadelphia Phillies,PHI,2005,0.543,0,0,Good
+Oakland Athletics,OAK,2005,0.543,0,0,Good
+Florida Marlins,MIA,2005,0.512,0,0,Good
+New York Mets,NYN,2005,0.512,0,0,Good
+Minnesota Twins,MIN,2005,0.512,0,0,Good
+San Diego Padres,SDN,2005,0.506,1,0,Good
+Milwaukee Brewers,MIL,2005,0.5,0,0,Good
+Washington Nationals,WAS,2005,0.5,0,0,Good
+Toronto Blue Jays,TOR,2005,0.494,0,0,Bad
+Texas Rangers,TEX,2005,0.488,0,0,Bad
+Chicago Cubs,CHN,2005,0.488,0,0,Bad
+Arizona Diamondbacks,ARI,2005,0.475,0,0,Bad
+San Francisco Giants,SFN,2005,0.463,0,0,Bad
+Baltimore Orioles,BAL,2005,0.457,0,0,Bad
+Cincinnati Reds,CIN,2005,0.451,0,0,Bad
+Los Angeles Dodgers,LAN,2005,0.438,0,0,Bad
+Detroit Tigers,DET,2005,0.438,0,0,Bad
+Seattle Mariners,SEA,2005,0.426,0,0,Bad
+Colorado Rockies,COL,2005,0.414,0,0,Bad
+Tampa Bay Devil Rays,TBA,2005,0.414,0,0,Bad
+Pittsburgh Pirates,PIT,2005,0.414,0,0,Bad
+Kansas City Royals,KCA,2005,0.346,0,0,Terrible
+St. Louis Cardinals,SLN,2004,0.648,1,0,Great
+New York Yankees,NYA,2004,0.623,1,0,Great
+Boston Red Sox,BOS,2004,0.605,1,1,Good
+Atlanta Braves,ATL,2004,0.593,1,0,Good
+Los Angeles Dodgers,LAN,2004,0.574,1,0,Good
+Minnesota Twins,MIN,2004,0.568,1,0,Good
+Anaheim Angels,ANA,2004,0.568,1,0,Good
+Houston Astros,HOU,2004,0.568,1,0,Good
+San Francisco Giants,SFN,2004,0.562,0,0,Good
+Oakland Athletics,OAK,2004,0.562,0,0,Good
+Texas Rangers,TEX,2004,0.549,0,0,Good
+Chicago Cubs,CHN,2004,0.549,0,0,Good
+San Diego Padres,SDN,2004,0.537,0,0,Good
+Philadelphia Phillies,PHI,2004,0.531,0,0,Good
+Chicago White Sox,CHA,2004,0.512,0,0,Good
+Florida Marlins,MIA,2004,0.512,0,0,Good
+Cleveland Indians,CLE,2004,0.494,0,0,Bad
+Baltimore Orioles,BAL,2004,0.481,0,0,Bad
+Cincinnati Reds,CIN,2004,0.469,0,0,Bad
+Pittsburgh Pirates,PIT,2004,0.447,0,0,Bad
+Detroit Tigers,DET,2004,0.444,0,0,Bad
+New York Mets,NYN,2004,0.438,0,0,Bad
+Tampa Bay Devil Rays,TBA,2004,0.435,0,0,Bad
+Colorado Rockies,COL,2004,0.42,0,0,Bad
+Toronto Blue Jays,TOR,2004,0.416,0,0,Bad
+Milwaukee Brewers,MIL,2004,0.416,0,0,Bad
+Montreal Expos,MON,2004,0.414,0,0,Bad
+Seattle Mariners,SEA,2004,0.389,0,0,Bad
+Kansas City Royals,KCA,2004,0.358,0,0,Terrible
+Arizona Diamondbacks,ARI,2004,0.315,0,0,Terrible
+Atlanta Braves,ATL,2003,0.623,1,0,Great
+New York Yankees,NYA,2003,0.623,1,0,Great
+San Francisco Giants,SFN,2003,0.621,1,0,Great
+Oakland Athletics,OAK,2003,0.593,1,0,Good
+Boston Red Sox,BOS,2003,0.586,1,0,Good
+Seattle Mariners,SEA,2003,0.574,0,0,Good
+Florida Marlins,MIA,2003,0.562,1,1,Good
+Minnesota Twins,MIN,2003,0.556,1,0,Good
+Chicago Cubs,CHN,2003,0.543,1,0,Good
+Houston Astros,HOU,2003,0.537,0,0,Good
+Chicago White Sox,CHA,2003,0.531,0,0,Good
+Toronto Blue Jays,TOR,2003,0.531,0,0,Good
+Philadelphia Phillies,PHI,2003,0.531,0,0,Good
+Los Angeles Dodgers,LAN,2003,0.525,0,0,Good
+St. Louis Cardinals,SLN,2003,0.525,0,0,Good
+Arizona Diamondbacks,ARI,2003,0.519,0,0,Good
+Kansas City Royals,KCA,2003,0.512,0,0,Good
+Montreal Expos,MON,2003,0.512,0,0,Good
+Anaheim Angels,ANA,2003,0.475,0,0,Bad
+Pittsburgh Pirates,PIT,2003,0.463,0,0,Bad
+Colorado Rockies,COL,2003,0.457,0,0,Bad
+Baltimore Orioles,BAL,2003,0.438,0,0,Bad
+Texas Rangers,TEX,2003,0.438,0,0,Bad
+Cincinnati Reds,CIN,2003,0.426,0,0,Bad
+Cleveland Indians,CLE,2003,0.42,0,0,Bad
+Milwaukee Brewers,MIL,2003,0.42,0,0,Bad
+New York Mets,NYN,2003,0.41,0,0,Bad
+San Diego Padres,SDN,2003,0.395,0,0,Bad
+Tampa Bay Devil Rays,TBA,2003,0.389,0,0,Bad
+Detroit Tigers,DET,2003,0.265,0,0,Terrible
+New York Yankees,NYA,2002,0.64,1,0,Great
+Oakland Athletics,OAK,2002,0.636,1,0,Great
+Atlanta Braves,ATL,2002,0.631,1,0,Great
+Anaheim Angels,ANA,2002,0.611,1,1,Good
+Arizona Diamondbacks,ARI,2002,0.605,1,0,Good
+St. Louis Cardinals,SLN,2002,0.599,1,0,Good
+San Francisco Giants,SFN,2002,0.59,1,0,Good
+Minnesota Twins,MIN,2002,0.584,1,0,Good
+Boston Red Sox,BOS,2002,0.574,0,0,Good
+Seattle Mariners,SEA,2002,0.574,0,0,Good
+Los Angeles Dodgers,LAN,2002,0.568,0,0,Good
+Houston Astros,HOU,2002,0.519,0,0,Good
+Montreal Expos,MON,2002,0.512,0,0,Good
+Chicago White Sox,CHA,2002,0.5,0,0,Good
+Philadelphia Phillies,PHI,2002,0.497,0,0,Bad
+Florida Marlins,MIA,2002,0.488,0,0,Bad
+Toronto Blue Jays,TOR,2002,0.481,0,0,Bad
+Cincinnati Reds,CIN,2002,0.481,0,0,Bad
+New York Mets,NYN,2002,0.466,0,0,Bad
+Cleveland Indians,CLE,2002,0.457,0,0,Bad
+Colorado Rockies,COL,2002,0.451,0,0,Bad
+Pittsburgh Pirates,PIT,2002,0.447,0,0,Bad
+Texas Rangers,TEX,2002,0.444,0,0,Bad
+Baltimore Orioles,BAL,2002,0.414,0,0,Bad
+Chicago Cubs,CHN,2002,0.414,0,0,Bad
+San Diego Padres,SDN,2002,0.407,0,0,Bad
+Kansas City Royals,KCA,2002,0.383,0,0,Bad
+Milwaukee Brewers,MIL,2002,0.346,0,0,Terrible
+Detroit Tigers,DET,2002,0.342,0,0,Terrible
+Tampa Bay Devil Rays,TBA,2002,0.342,0,0,Terrible
+Seattle Mariners,SEA,2001,0.716,1,0,Great
+Oakland Athletics,OAK,2001,0.63,1,0,Great
+New York Yankees,NYA,2001,0.594,1,0,Good
+Houston Astros,HOU,2001,0.574,1,0,Good
+St. Louis Cardinals,SLN,2001,0.574,1,0,Good
+Arizona Diamondbacks,ARI,2001,0.568,1,1,Good
+Cleveland Indians,CLE,2001,0.562,1,0,Good
+San Francisco Giants,SFN,2001,0.556,0,0,Good
+Atlanta Braves,ATL,2001,0.543,1,0,Good
+Chicago Cubs,CHN,2001,0.543,0,0,Good
+Philadelphia Phillies,PHI,2001,0.531,0,0,Good
+Los Angeles Dodgers,LAN,2001,0.531,0,0,Good
+Minnesota Twins,MIN,2001,0.525,0,0,Good
+Chicago White Sox,CHA,2001,0.512,0,0,Good
+Boston Red Sox,BOS,2001,0.509,0,0,Good
+New York Mets,NYN,2001,0.506,0,0,Good
+Toronto Blue Jays,TOR,2001,0.494,0,0,Bad
+San Diego Padres,SDN,2001,0.488,0,0,Bad
+Florida Marlins,MIA,2001,0.469,0,0,Bad
+Anaheim Angels,ANA,2001,0.463,0,0,Bad
+Texas Rangers,TEX,2001,0.451,0,0,Bad
+Colorado Rockies,COL,2001,0.451,0,0,Bad
+Milwaukee Brewers,MIL,2001,0.42,0,0,Bad
+Montreal Expos,MON,2001,0.42,0,0,Bad
+Detroit Tigers,DET,2001,0.407,0,0,Bad
+Cincinnati Reds,CIN,2001,0.407,0,0,Bad
+Kansas City Royals,KCA,2001,0.401,0,0,Bad
+Baltimore Orioles,BAL,2001,0.391,0,0,Bad
+Tampa Bay Devil Rays,TBA,2001,0.383,0,0,Bad
+Pittsburgh Pirates,PIT,2001,0.383,0,0,Bad
+San Francisco Giants,SFN,2000,0.599,1,0,Good
+Atlanta Braves,ATL,2000,0.586,1,0,Good
+St. Louis Cardinals,SLN,2000,0.586,1,0,Good
+Chicago White Sox,CHA,2000,0.586,1,0,Good
+New York Mets,NYN,2000,0.58,1,0,Good
+Oakland Athletics,OAK,2000,0.565,1,0,Good
+Seattle Mariners,SEA,2000,0.562,1,0,Good
+Cleveland Indians,CLE,2000,0.556,0,0,Good
+New York Yankees,NYA,2000,0.54,1,1,Good
+Los Angeles Dodgers,LAN,2000,0.531,0,0,Good
+Boston Red Sox,BOS,2000,0.525,0,0,Good
+Cincinnati Reds,CIN,2000,0.525,0,0,Good
+Arizona Diamondbacks,ARI,2000,0.525,0,0,Good
+Toronto Blue Jays,TOR,2000,0.512,0,0,Good
+Anaheim Angels,ANA,2000,0.506,0,0,Good
+Colorado Rockies,COL,2000,0.506,0,0,Good
+Florida Marlins,MIA,2000,0.491,0,0,Bad
+Detroit Tigers,DET,2000,0.488,0,0,Bad
+Kansas City Royals,KCA,2000,0.475,0,0,Bad
+San Diego Padres,SDN,2000,0.469,0,0,Bad
+Baltimore Orioles,BAL,2000,0.457,0,0,Bad
+Milwaukee Brewers,MIL,2000,0.451,0,0,Bad
+Houston Astros,HOU,2000,0.444,0,0,Bad
+Texas Rangers,TEX,2000,0.438,0,0,Bad
+Tampa Bay Devil Rays,TBA,2000,0.429,0,0,Bad
+Minnesota Twins,MIN,2000,0.426,0,0,Bad
+Pittsburgh Pirates,PIT,2000,0.426,0,0,Bad
+Montreal Expos,MON,2000,0.414,0,0,Bad
+Philadelphia Phillies,PHI,2000,0.401,0,0,Bad
+Chicago Cubs,CHN,2000,0.401,0,0,Bad
+Atlanta Braves,ATL,1999,0.636,1,0,Great
+Arizona Diamondbacks,ARI,1999,0.617,1,0,Great
+New York Yankees,NYA,1999,0.605,1,1,Good
+Cleveland Indians,CLE,1999,0.599,1,0,Good
+Houston Astros,HOU,1999,0.599,1,0,Good
+New York Mets,NYN,1999,0.595,1,0,Good
+Cincinnati Reds,CIN,1999,0.589,0,0,Good
+Texas Rangers,TEX,1999,0.586,1,0,Good
+Boston Red Sox,BOS,1999,0.58,1,0,Good
+Oakland Athletics,OAK,1999,0.537,0,0,Good
+San Francisco Giants,SFN,1999,0.531,0,0,Good
+Toronto Blue Jays,TOR,1999,0.519,0,0,Good
+Seattle Mariners,SEA,1999,0.488,0,0,Bad
+Pittsburgh Pirates,PIT,1999,0.484,0,0,Bad
+Baltimore Orioles,BAL,1999,0.481,0,0,Bad
+Los Angeles Dodgers,LAN,1999,0.475,0,0,Bad
+Philadelphia Phillies,PHI,1999,0.475,0,0,Bad
+Chicago White Sox,CHA,1999,0.466,0,0,Bad
+St. Louis Cardinals,SLN,1999,0.466,0,0,Bad
+Milwaukee Brewers,MIL,1999,0.46,0,0,Bad
+San Diego Padres,SDN,1999,0.457,0,0,Bad
+Colorado Rockies,COL,1999,0.444,0,0,Bad
+Anaheim Angels,ANA,1999,0.432,0,0,Bad
+Detroit Tigers,DET,1999,0.429,0,0,Bad
+Tampa Bay Devil Rays,TBA,1999,0.426,0,0,Bad
+Montreal Expos,MON,1999,0.42,0,0,Bad
+Chicago Cubs,CHN,1999,0.414,0,0,Bad
+Kansas City Royals,KCA,1999,0.398,0,0,Bad
+Florida Marlins,MIA,1999,0.395,0,0,Bad
+Minnesota Twins,MIN,1999,0.394,0,0,Bad
+New York Yankees,NYA,1998,0.704,1,1,Great
+Atlanta Braves,ATL,1998,0.654,1,0,Great
+Houston Astros,HOU,1998,0.63,1,0,Great
+San Diego Padres,SDN,1998,0.605,1,0,Good
+Boston Red Sox,BOS,1998,0.568,1,0,Good
+Chicago Cubs,CHN,1998,0.552,1,0,Good
+Cleveland Indians,CLE,1998,0.549,1,0,Good
+San Francisco Giants,SFN,1998,0.546,0,0,Good
+Texas Rangers,TEX,1998,0.543,1,0,Good
+New York Mets,NYN,1998,0.543,0,0,Good
+Toronto Blue Jays,TOR,1998,0.543,0,0,Good
+Anaheim Angels,ANA,1998,0.525,0,0,Good
+St. Louis Cardinals,SLN,1998,0.512,0,0,Good
+Los Angeles Dodgers,LAN,1998,0.512,0,0,Good
+Chicago White Sox,CHA,1998,0.494,0,0,Bad
+Baltimore Orioles,BAL,1998,0.488,0,0,Bad
+Colorado Rockies,COL,1998,0.475,0,0,Bad
+Cincinnati Reds,CIN,1998,0.475,0,0,Bad
+Seattle Mariners,SEA,1998,0.472,0,0,Bad
+Philadelphia Phillies,PHI,1998,0.463,0,0,Bad
+Oakland Athletics,OAK,1998,0.457,0,0,Bad
+Milwaukee Brewers,MIL,1998,0.457,0,0,Bad
+Kansas City Royals,KCA,1998,0.447,0,0,Bad
+Minnesota Twins,MIN,1998,0.432,0,0,Bad
+Pittsburgh Pirates,PIT,1998,0.426,0,0,Bad
+Montreal Expos,MON,1998,0.401,0,0,Bad
+Detroit Tigers,DET,1998,0.401,0,0,Bad
+Arizona Diamondbacks,ARI,1998,0.401,0,0,Bad
+Tampa Bay Devil Rays,TBA,1998,0.389,0,0,Bad
+Florida Marlins,MIA,1998,0.333,0,0,Terrible
+Atlanta Braves,ATL,1997,0.623,1,0,Great
+Baltimore Orioles,BAL,1997,0.605,1,0,Good
+New York Yankees,NYA,1997,0.593,1,0,Good
+Florida Marlins,MIA,1997,0.568,1,1,Good
+San Francisco Giants,SFN,1997,0.556,1,0,Good
+Seattle Mariners,SEA,1997,0.556,1,0,Good
+Los Angeles Dodgers,LAN,1997,0.543,0,0,Good
+New York Mets,NYN,1997,0.543,0,0,Good
+Cleveland Indians,CLE,1997,0.534,1,0,Good
+Houston Astros,HOU,1997,0.519,1,0,Good
+Anaheim Angels,ANA,1997,0.519,0,0,Good
+Colorado Rockies,COL,1997,0.512,0,0,Good
+Chicago White Sox,CHA,1997,0.497,0,0,Bad
+Pittsburgh Pirates,PIT,1997,0.488,0,0,Bad
+Detroit Tigers,DET,1997,0.488,0,0,Bad
+Milwaukee Brewers,MIL,1997,0.484,0,0,Bad
+Montreal Expos,MON,1997,0.481,0,0,Bad
+Boston Red Sox,BOS,1997,0.481,0,0,Bad
+Texas Rangers,TEX,1997,0.475,0,0,Bad
+Cincinnati Reds,CIN,1997,0.469,0,0,Bad
+San Diego Padres,SDN,1997,0.469,0,0,Bad
+Toronto Blue Jays,TOR,1997,0.469,0,0,Bad
+St. Louis Cardinals,SLN,1997,0.451,0,0,Bad
+Minnesota Twins,MIN,1997,0.42,0,0,Bad
+Philadelphia Phillies,PHI,1997,0.42,0,0,Bad
+Chicago Cubs,CHN,1997,0.42,0,0,Bad
+Kansas City Royals,KCA,1997,0.416,0,0,Bad
+Oakland Athletics,OAK,1997,0.401,0,0,Bad
+Cleveland Indians,CLE,1996,0.615,1,0,Good
+Atlanta Braves,ATL,1996,0.593,1,0,Good
+New York Yankees,NYA,1996,0.568,1,1,Good
+San Diego Padres,SDN,1996,0.562,1,0,Good
+Texas Rangers,TEX,1996,0.556,1,0,Good
+Los Angeles Dodgers,LAN,1996,0.556,1,0,Good
+St. Louis Cardinals,SLN,1996,0.543,1,0,Good
+Baltimore Orioles,BAL,1996,0.543,1,0,Good
+Montreal Expos,MON,1996,0.543,0,0,Good
+Seattle Mariners,SEA,1996,0.528,0,0,Good
+Chicago White Sox,CHA,1996,0.525,0,0,Good
+Boston Red Sox,BOS,1996,0.525,0,0,Good
+Colorado Rockies,COL,1996,0.512,0,0,Good
+Houston Astros,HOU,1996,0.506,0,0,Good
+Cincinnati Reds,CIN,1996,0.5,0,0,Good
+Milwaukee Brewers,MIL,1996,0.494,0,0,Bad
+Florida Marlins,MIA,1996,0.494,0,0,Bad
+Oakland Athletics,OAK,1996,0.481,0,0,Bad
+Minnesota Twins,MIN,1996,0.481,0,0,Bad
+Chicago Cubs,CHN,1996,0.469,0,0,Bad
+Kansas City Royals,KCA,1996,0.466,0,0,Bad
+Toronto Blue Jays,TOR,1996,0.457,0,0,Bad
+Pittsburgh Pirates,PIT,1996,0.451,0,0,Bad
+New York Mets,NYN,1996,0.438,0,0,Bad
+California Angels,ANA,1996,0.435,0,0,Bad
+San Francisco Giants,SFN,1996,0.42,0,0,Bad
+Philadelphia Phillies,PHI,1996,0.414,0,0,Bad
+Detroit Tigers,DET,1996,0.327,0,0,Terrible
+Cleveland Indians,CLE,1995,0.694,1,0,Great
+Atlanta Braves,ATL,1995,0.625,1,1,Great
+Boston Red Sox,BOS,1995,0.597,1,0,Good
+Cincinnati Reds,CIN,1995,0.59,1,0,Good
+New York Yankees,NYA,1995,0.549,1,0,Good
+Seattle Mariners,SEA,1995,0.545,1,0,Good
+Los Angeles Dodgers,LAN,1995,0.542,1,0,Good
+California Angels,ANA,1995,0.538,0,0,Good
+Colorado Rockies,COL,1995,0.535,1,0,Good
+Houston Astros,HOU,1995,0.528,0,0,Good
+Texas Rangers,TEX,1995,0.514,0,0,Good
+Chicago Cubs,CHN,1995,0.507,0,0,Good
+Baltimore Orioles,BAL,1995,0.493,0,0,Bad
+Kansas City Royals,KCA,1995,0.486,0,0,Bad
+San Diego Padres,SDN,1995,0.486,0,0,Bad
+New York Mets,NYN,1995,0.479,0,0,Bad
+Philadelphia Phillies,PHI,1995,0.479,0,0,Bad
+Chicago White Sox,CHA,1995,0.472,0,0,Bad
+Florida Marlins,MIA,1995,0.469,0,0,Bad
+San Francisco Giants,SFN,1995,0.465,0,0,Bad
+Oakland Athletics,OAK,1995,0.465,0,0,Bad
+Montreal Expos,MON,1995,0.458,0,0,Bad
+Milwaukee Brewers,MIL,1995,0.451,0,0,Bad
+St. Louis Cardinals,SLN,1995,0.434,0,0,Bad
+Detroit Tigers,DET,1995,0.417,0,0,Bad
+Pittsburgh Pirates,PIT,1995,0.403,0,0,Bad
+Minnesota Twins,MIN,1995,0.389,0,0,Bad
+Toronto Blue Jays,TOR,1995,0.389,0,0,Bad
