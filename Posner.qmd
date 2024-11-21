@@ -12,32 +12,92 @@ library(scales)
 
 
 ```{r}
+#Load the Data
 ANA<-read_csv("Data/Team Datasets/ANA_games.csv")
-
-read.csv("Data/All MLB.csv")
 
 ANA %>% 
   names()
 ```
 
+## ATT
 
 ```{r}
-match_out_full <- matchit(
-    Home ~ Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Attendance + Dow,
+match_out_full_ANA <- matchit(
+    Home ~ Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night,
     data = ANA,
     method = "full",
-    exact = ~ Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow,  # Example of exact matching variables
+    exact = ~ Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night,  # Example of exact matching variables
     distance = "glm",
     estimand = "ATT"
 )
-
 ```
 
 ```{r}
-match_out_full_summ <- summary(match_out_full, interactions = TRUE)
-match_out_full_summ
+match_out_full_summ_ANA <- summary(match_out_full_ANA, interactions = TRUE)
+```
+
+```{r, fig.height= 15}
+plot(match_out_full_summ_ANA)
 ```
 
 ```{r}
-plot(match_out_full_summ)
+match_data_full_ATT_ANA <- match.data(match_out_full_ANA)
+
+mod2 <- lm(ANA_win ~ Home * (Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Attendance + Dow + Day_Night), data = match_data_full_ATT_ANA, weights = weights)
+
+avg_comparisons(
+    mod2,
+    variables = "Home",
+    vcov = ~subclass,
+    newdata = filter(match_data_full_ATT_ANA, Home == 1))
 ```
+
+For all Angles's home games, if they had been played away, we would expect their winning percentage to be 9.4% less
+
+```{r}
+match_out_full_ATC_ANA <- matchit(
+    Home ~ Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night,
+    data = ANA,
+    method = "full",
+    exact = ~ Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night,
+    distance = "glm",
+    estimand = "ATC"
+)
+```
+
+```{r}
+match_out_full_summ_ATC_ANA <- summary(match_out_full_ATC_ANA, interactions = TRUE)
+match_out_full_summ_ATC_ANA
+```
+
+```{r, fig.height= 15}
+plot(match_out_full_summ_ATC_ANA)
+```
+
+
+```{r}
+match_data_full_ATC_ANA <- match.data(match_out_full_ATC_ANA)
+
+mod3 <- lm(ANA_win ~ Home * (Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night), data = match_data_full_ATC_ANA, weights = weights)
+
+avg_comparisons(
+    mod3,
+    variables = "Home",
+    vcov = ~subclass,
+    newdata = filter(match_data_full_ATC_ANA, Home == 0))
+```
+
+
+```{r}
+match_data_full_ANA <- match.data(match_out_full_ANA)
+
+mod4 <- lm(ANA_win ~ Home * (Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night), data = match_data_full_ANA, weights = weights)
+
+avg_comparisons(
+    mod4,
+    variables = "Home",
+    vcov = ~subclass)
+```
+
+
+
