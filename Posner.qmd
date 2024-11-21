@@ -56,6 +56,7 @@ plot(dag)
 
 ```
 
+For our DAG plot, we chose to include the variables that we believed affected winning a game the most. While constructing the DAG plot, we observed that there are no true confounding variables, as being the home team is determined at the beginning of the season. We decided to use full matching as our method of analysis, matching on precision variables—those that can directly affect whether a team wins a game or not. Some variables are unmeasurable or would complicate the analysis significantly, such as the home plate umpire, since a team encounters a specific umpire behind home plate fewer than five times a year.
 
 ```{r include = FALSE}
 knitr::opts_chunk$set(
