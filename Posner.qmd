@@ -1,0 +1,43 @@
+```{r}
+library(dplyr)
+library(tidyverse)
+library(ggplot2)
+library(tidyverse)
+library(broom)
+library(MatchIt)
+library(marginaleffects)
+library(dagitty)
+library(scales)
+```
+
+
+```{r}
+ANA<-read_csv("Data/Team Datasets/ANA_games.csv")
+
+read.csv("Data/All MLB.csv")
+
+ANA %>% 
+  names()
+```
+
+
+```{r}
+match_out_full <- matchit(
+    Home ~ Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Attendance + Dow,
+    data = ANA,
+    method = "full",
+    exact = ~ Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow,  # Example of exact matching variables
+    distance = "glm",
+    estimand = "ATT"
+)
+
+```
+
+```{r}
+match_out_full_summ <- summary(match_out_full, interactions = TRUE)
+match_out_full_summ
+```
+
+```{r}
+plot(match_out_full_summ)
+```

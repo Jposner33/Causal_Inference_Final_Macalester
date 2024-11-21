@@ -3,25 +3,3 @@ title: "Untitled"
 format: html
 editor: visual
 ---
-
-
-
-```{r}
-match_out_full <- matchit(
-    treat ~ age + educ + race + married + nodegree + re74 + re75,
-    data = lalonde,
-    method = "full",
-    exact = ~ race + married + nodegree,
-    distance = "glm",
-    estimand = "ATT"
-)
-```
-
-```{r}
-match_out_full_summ <- summary(match_out_full, interactions = TRUE)
-match_out_full_summ
-```
-
-```{r}
-plot(match_out_full_summ)
-```
