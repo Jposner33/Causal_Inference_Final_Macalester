@@ -175,3 +175,6 @@ avg_comparisons(
 
 > If the Angels played every game away, we would expect the Angels win percentage to be 8.6% lower than if they played every game at home. This equates to about 13.9 games which means the Angels would win 14 games more if they played every game at home versus every game away. This is very interesting considering this could be the difference between winning your division and not making the playoffs. 
 
+# Conclusion
+
+For the Angels specifically, there is a relevant causal effect for playing at home on winning a specific game. We will analyze the other 29 teams and rank them for each category to further analyze the effect of being the home team on winning games. 
