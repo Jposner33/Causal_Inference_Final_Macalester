@@ -91,10 +91,11 @@ ANA %>%
   names()
 ```
 
-## ATT
+## Estimating ATT Using Full Matching
 
 ```{r}
-match_out_full_ANA <- matchit(
+# Matching Method for ATT
+match_out_full_ATT_ANA <- matchit(
     Home ~ Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night,
     data = ANA,
     method = "full",
@@ -102,21 +103,50 @@ match_out_full_ANA <- matchit(
     distance = "glm",
     estimand = "ATT"
 )
+
+# 'exact' was used to full match with additional precision variables. While no variables in this dataset directly effect the causal path of interest there are variables that may significantly impact game outcome. These variables were determined as the categorical win pct variable, if the opp made playoffs, if the opp made WS, day of the week, and night/day games. Why do these improve the model / matching?
 ```
+
+# Balance Statistics for ATT after Matching
 
 ```{r}
-match_out_full_summ_ANA <- summary(match_out_full_ANA, interactions = TRUE)
+# For full matching
+bal.tab(match_out_full_ATT_ANA)
 ```
 
-```{r, fig.height= 15}
-plot(match_out_full_summ_ANA)
-```
+> The number of matched cases is very high compared to the number of original observed cases in each treatment category. Only 23 from the orginal 2176 control cases were left unmatched, a very high number. Additionally, all treated cases were matched. This is great as our matching model isn't too specific or obscure and not many cases are left out from the analysis. 
 
 ```{r}
-match_data_full_ATT_ANA <- match.data(match_out_full_ANA)
+match_out_full_summ_ATT_ANA <- summary(match_out_full_ATT_ANA, interactions = TRUE)
+plot(match_out_full_summ_ATT_ANA)
+```
 
+> Based on the balance summary plot provided above it appears that our matching method with precise variables is great. None of the variables, nor their interactions, are significantly different from one another when matched. This means that all matched cases are within a desirable range that is more accurate than when matching is not used. Considering that a wide range of data was used throughout the years this is great and shows that good matches were found.  
+
+# Common Support Plot
+
+```{r}
+# Getting ps scores from full
+lalonde_with_ps_full_ATT_ANA <- ANA %>% 
+    mutate(ps = match_out_full_ATT_ANA$distance)
+
+# Plot for full matching ANA ATT implementation
+ggplot(lalonde_with_ps_full_ATT_ANA, aes(x = ps, fill = factor(Home))) +
+  geom_density(alpha = 0.25) +
+  theme_classic()
+```
+> The support plot is great and shows that the propensity score range is overlapped for both treatment and control groups. This essentially confirms that we are allowed to match based on this model and aren't cutting out any significiant data. The supports our analysis. 
+
+# Extracting the matched data and estimating ATT
+
+```{r}
+# Extract Data
+match_data_full_ATT_ANA <- match.data(match_out_full_ATT_ANA)
+
+# Regression Model based on this matched data
 mod2 <- lm(ANA_win ~ Home * (Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Attendance + Dow + Day_Night), data = match_data_full_ATT_ANA, weights = weights)
 
+# Estimating ATT from model
 avg_comparisons(
     mod2,
     variables = "Home",
@@ -124,11 +154,12 @@ avg_comparisons(
     newdata = filter(match_data_full_ATT_ANA, Home == 1))
 ```
 
-For all Angle's home games, if they had been played away, we would expect their winning percentage to be 9.4% less. This equates to about 7.6 games, meaning the Angels would've lost about 8 games more if they had played every home game as an away game. 
+> For all Angle's home games, if they had been played away, we would expect their winning percentage to be 9.4% less. This equates to about 7.6 games, meaning the Angels would've lost about 8 games more if they had played every home game as an away game. 
 
-## ATC
+## Estimating ATC using full matching model
 
 ```{r}
+# Matching method for ATC, using same precision variables
 match_out_full_ATC_ANA <- matchit(
     Home ~ Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night,
     data = ANA,
@@ -139,20 +170,52 @@ match_out_full_ATC_ANA <- matchit(
 )
 ```
 
+# Balance Statitics and Plot for ATC
+
 ```{r}
+# Balance Table
+bal.tab(match_out_full_ATC_ANA)
+```
+
+> Same as above for ATT, only 23 cases in the control category are without matches.
+
+```{r}
+# Matched Summary
 match_out_full_summ_ATC_ANA <- summary(match_out_full_ATC_ANA, interactions = TRUE)
 match_out_full_summ_ATC_ANA
 ```
 
+> Mean difference is zero for all variables and their interaction terms, which is much better than the summary of balance for all data. 
+
 ```{r, fig.height= 15}
+# Plot visualizing what is described above
 plot(match_out_full_summ_ATC_ANA)
 ```
 
+# Common Support Plot
+
 ```{r}
+# Getting ps scores from full
+lalonde_with_ps_full_ATC_ANA <- ANA %>% 
+    mutate(ps = match_out_full_ATC_ANA$distance)
+
+# Plot for full matching ANA ATT implementation
+ggplot(lalonde_with_ps_full_ATC_ANA, aes(x = ps, fill = factor(Home))) +
+  geom_density(alpha = 0.25) +
+  theme_classic()
+```
+> Common support plot is the same, whihc was to be expected and makes sense. Again, this is a good sign for our analysis. 
+
+# Extracting Matched Data and Estimating ATC
+
+```{r}
+# Extract
 match_data_full_ATC_ANA <- match.data(match_out_full_ATC_ANA)
 
+# Model Creation
 mod3 <- lm(ANA_win ~ Home * (Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night), data = match_data_full_ATC_ANA, weights = weights)
 
+# Estimate
 avg_comparisons(
     mod3,
     variables = "Home",
@@ -160,13 +223,32 @@ avg_comparisons(
     newdata = filter(match_data_full_ATC_ANA, Home == 0))
 ```
 
-For all Angel's away games, if they had been played at home, we would expect their winning percentage to be 6.6% greater. This equates to about 5.3 games, meaning the Angels would've won about 5 games more if they had played every away game as a home game. 
+> For all Angel's away games, if they had been played at home, we would expect their winning percentage to be 6.6% greater. This equates to about 5.3 games, meaning the Angels would've won about 5 games more if they had played every away game as a home game. 
+
+# Estimating ATE using Matching
 
 ```{r}
-match_data_full_ANA <- match.data(match_out_full_ANA)
+# Matching method for ATE, using same precision variables
+match_out_full_ATE_ANA <- matchit(
+    Home ~ Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night,
+    data = ANA,
+    method = "full",
+    exact = ~ Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night,
+    distance = "glm",
+    estimand = "ATE"
+)
+```
 
-mod4 <- lm(ANA_win ~ Home * (Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night), data = match_data_full_ANA, weights = weights)
+# Extracting and Estimating
 
+```{r}
+# Extracting
+match_data_full_ATE_ANA <- match.data(match_out_full_ATE_ANA)
+
+# Model for ATE
+mod4 <- lm(ANA_win ~ Home * (Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night), data = match_data_full_ATE_ANA, weights = weights)
+
+# Estimation
 avg_comparisons(
     mod4,
     variables = "Home",
@@ -178,3 +260,13 @@ avg_comparisons(
 # Conclusion
 
 For the Angels specifically, there is a relevant causal effect for playing at home on winning a specific game. We will analyze the other 29 teams and rank them for each category to further analyze the effect of being the home team on winning games. 
+
+## Comments
+
+> Change the interpretation for ATE - the estimate above is different than what is written below it. I think this occured because we didn't orignally have a model for the ATE, it was just based off of the ATT model from the very top. I changed this so that we have three distinct matching methods based on ATT, ATC, and ATE now. Nonetheless, the estimate is still very close to what we originally found and is statistically significant, with good support. 
+
+> Organized the code and commented out some portions so that it is easier to follow. 
+
+> Common support plots look good and confirm that the control and treated groups have matches that can be made when observing all cases. No changes need to be made in that regard. 
+
+> Matching balance looks good, although we lose about 23 control cases. I am slightly confused as to why the standard mean difference for all variables and their interactions would be exactly zero. Why is that the case or is it incorrect? I could also be looking at the wrong thing on the output but I'm pretty sure that's what is displaying based on the graph. 
