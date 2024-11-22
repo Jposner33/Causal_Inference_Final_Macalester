@@ -79,6 +79,7 @@ library(MatchIt)
 library(marginaleffects)
 library(dagitty)
 library(scales)
+library(cobalt)
 ```
 
 ```{r}
@@ -103,9 +104,9 @@ match_out_full_ATT_ANA <- matchit(
     distance = "glm",
     estimand = "ATT"
 )
-
-# 'exact' was used to full match with additional precision variables. While no variables in this dataset directly effect the causal path of interest there are variables that may significantly impact game outcome. These variables were determined as the categorical win pct variable, if the opp made playoffs, if the opp made WS, day of the week, and night/day games. Why do these improve the model / matching?
 ```
+
+We used exact to full match with additional precision variables. While no variables in this dataset directly effect the causal path of interest there are variables that may significantly impact game outcome. These variables were determined as the categorical win pct variable, if the opp made playoffs, if the opp made WS, day of the week, and night/day games. Why do these improve the model / matching?
 
 # Balance Statistics for ATT after Matching
 
@@ -156,6 +157,8 @@ avg_comparisons(
 
 > For all Angle's home games, if they had been played away, we would expect their winning percentage to be 9.4% less. This equates to about 7.6 games, meaning the Angels would've lost about 8 games more if they had played every home game as an away game. 
 
+# make sure that it is 9.4 percent of 81 games and not 162
+
 ## Estimating ATC using full matching model
 
 ```{r}
@@ -170,7 +173,7 @@ match_out_full_ATC_ANA <- matchit(
 )
 ```
 
-# Balance Statitics and Plot for ATC
+## Balance Statitics and Plot for ATC
 
 ```{r}
 # Balance Table
@@ -255,7 +258,7 @@ avg_comparisons(
     vcov = ~subclass)
 ```
 
-> If the Angels played every game away, we would expect the Angels win percentage to be 8.6% lower than if they played every game at home. This equates to about 13.9 games which means the Angels would win 14 games more if they played every game at home versus every game away. This is very interesting considering this could be the difference between winning your division and not making the playoffs. 
+> If the Angels played every game away, we would expect the Angels win percentage to be 8% lower than if they played every game at home. This equates to about 12.93 games which means the Angels would win 13 games more if they played every game at home versus every game away. This is very interesting considering this could be the difference between winning your division and not making the playoffs. 
 
 # Conclusion
 
