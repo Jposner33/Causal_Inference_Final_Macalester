@@ -1,0 +1,60 @@
+---
+title: "Sens Analysis"
+format: html
+---
+
+# Packages
+```{r}
+library(EValue)
+library(readr)
+library(dplyr)
+```
+
+# Import Data Set and Clean
+```{r}
+ATE_results <- read_csv("ATE_results.csv")
+
+ATE_results <- ATE_results %>% 
+  filter(Team != "CHN")
+
+ATE_results
+```
+
+# Creating the Loop and Output Table
+```{r}
+# Initialize a results data frame to store output
+results <- data.frame(
+  Team = character(),
+  Point_EValue = numeric(),
+  Upper_Bound_EValue = numeric(),
+  stringsAsFactors = FALSE
+)
+
+# Loop through each team and calculate E-values
+for (i in 1:nrow(ATE_results)) {
+  # Extract values for the current team
+  est <- ATE_results$estimate[i]
+  lo <- ATE_results$conf.low[i]
+  hi <- ATE_results$conf.high[i]
+  
+  # Calculate E-values
+  evalues <- evalues.OR(est = est, lo = lo, hi = hi, rare = 0)
+  
+  # Store the results
+  results <- rbind(
+    results,
+    data.frame(
+      Team = ATE_results$Team[i],
+      Point_EValue = evalues[1, 1], # E-value for point estimate
+      Upper_Bound_EValue = evalues[1, 3] # E-value for upper bound
+    )
+  )
+}
+```
+
+# View Results
+```{r}
+print(results)
+```
+
+> Recieved results for each team using the Evalues package and odds ratio (correct?) but I had to get rid of the cubs because they had a negative estimate.. not sure why it won't work like the rest of the estimates
