@@ -263,13 +263,3 @@ avg_comparisons(
 # Conclusion
 
 For the Angels specifically, there is a relevant causal effect for playing at home on winning a specific game. We will analyze the other 29 teams and rank them for each category to further analyze the effect of being the home team on winning games. 
-
-## Comments
-
-> Change the interpretation for ATE - the estimate above is different than what is written below it. I think this occured because we didn't orignally have a model for the ATE, it was just based off of the ATT model from the very top. I changed this so that we have three distinct matching methods based on ATT, ATC, and ATE now. Nonetheless, the estimate is still very close to what we originally found and is statistically significant, with good support. 
-
-> Organized the code and commented out some portions so that it is easier to follow. 
-
-> Common support plots look good and confirm that the control and treated groups have matches that can be made when observing all cases. No changes need to be made in that regard. 
-
-> Matching balance looks good, although we lose about 23 control cases. I am slightly confused as to why the standard mean difference for all variables and their interactions would be exactly zero. Why is that the case or is it incorrect? I could also be looking at the wrong thing on the output but I'm pretty sure that's what is displaying based on the graph. 

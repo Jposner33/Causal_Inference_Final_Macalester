@@ -1,5 +1,263 @@
 ---
-title: "Untitled"
-format: html
-editor: visual
+title: "Data Analysis and Methods"
+authors: "Jacob Posner, Evan Burns, Bowman Wingard, Cameron Latvis"
+format: 
+  html:
+    embed-resources: true
+    toc: true
+    theme: cerulean
 ---
+
+# Data
+
+We collected data from Retrosheet, a database that tracks and stores Major League Baseball data at the game level. We gathered data on each regular season baseball game from 1995 to 2023. Each game’s data contains variables such as the date, team information, stadium information, attendance, score, team stats, umpire information, and pitcher information. This is important because the data gives us an abundance of information to match or weigh on if we choose to go down those paths. The dimensions of our dataset are 68185 observations of 175 variables. 
+
+We performed several filters from here to produce the final data set we will use for our analysis. First, we only included games were included in the regular season. We made a new data set for each individual team that we then can analyze and compare to each other. We made some adjustments by team as well. For example, we are analyzing the years 1995 and after, however, the Tampa Bay Rays became a team in 1998 so we only could gather data starting that year. Another adjustment we made is to treat the Florida Marlins and the Miami Marlins as the same team. They are the same franchise but were renamed in 2012. In the data, the two names are coded differently and are working around it by naming both the Miami Marlins. We also made some other changes to help make it easier to add confounding variables. We added binary categories for opposing team statistics that can help us control for certain variables. 
+
+Lastly, we chose to exclude the years 2020 and 2021 from our analysis. Since we are concerned with home-field advantage, we anticipate a portion of home-field advantage to stem from fans attending games and making their presence felt. Because of the pandemic, there was extremely limited attendance in these two years, which is why they are excluded in our data sets. We have a total of 30 data sets; one for each MLB team, and will analyze them individually and compare them to each other. 
+
+For the purposes of this milestone, we are conducting an analysis on 1 team. We hope to write a function that will complete the analysis for us so we don't have to copy and paste code 30 different times. 
+
+# Dag Plot 
+
+```{r}
+library(dagitty)
+
+# Define the DAG
+dag <- dagitty('
+dag {
+  bb="-8,-6,10,0"
+  "Day/Night" [pos="2.887,-4.914"]
+  "Home (treatment)" [exposure,pos="-6.498,-4.544"]
+  "Opponent Skill" [pos="5.682,-4.867"]
+  "Opponent Starter" [pos="7.232,-4.833"]
+  Attendance [pos="0.745,-4.633"]
+  Comfort [pos="-2.499,-4.360"]
+  DOW [pos="4.315,-4.915"]
+  Umpire [pos="8.232,-4.873"]
+  Win [outcome,pos="7.191,-4.503"]
+  performance [pos="1.153,-4.174"]
+
+  "Day/Night" -> Attendance
+  "Home (treatment)" -> Comfort
+  "Opponent Skill" -> Win
+  "Opponent Starter" -> Win
+  Attendance -> Comfort
+  Comfort -> Win
+  Comfort -> performance
+  DOW -> Attendance
+  Umpire -> Win
+  performance -> Win
+}
+')
+
+# Plot the DAG
+plot(dag)
+
+```
+
+For our DAG plot, we chose to include the variables that we believed affected winning a game the most. While constructing the DAG plot, we observed that there are no true confounding variables, as being the home team is determined at the beginning of the season. We decided to use full matching as our method of analysis, matching on precision variables—those that can directly affect whether a team wins a game or not. Some variables are unmeasurable or would complicate the analysis significantly, such as the home plate umpire, since a team encounters a specific umpire behind home plate fewer than five times a year.
+
+```{r include = FALSE}
+knitr::opts_chunk$set(
+  warning = FALSE,
+  message = FALSE,
+  collapse = TRUE, 
+  echo = TRUE, 
+  fig.height = 5, 
+  fig.width = 7,
+  fig.align = 'center')
+```
+
+```{r}
+library(dplyr)
+library(tidyverse)
+library(ggplot2)
+library(tidyverse)
+library(broom)
+library(MatchIt)
+library(marginaleffects)
+library(dagitty)
+library(scales)
+library(cobalt)
+```
+
+```{r}
+#Load the Data
+ANA<-read_csv("Data/Team Datasets/ANA_games.csv")
+
+ANA %>% 
+  dim()
+ANA %>% 
+  names()
+```
+
+## Estimating ATT Using Full Matching
+
+```{r}
+# Matching Method for ATT
+match_out_full_ATT_ANA <- matchit(
+    Home ~ Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night,
+    data = ANA,
+    method = "full",
+    exact = ~ Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night,  # Example of exact matching variables
+    distance = "glm",
+    estimand = "ATT"
+)
+```
+
+We used exact to full match with additional precision variables. While no variables in this dataset directly effect the causal path of interest there are variables that may significantly impact game outcome. These variables were determined as the categorical win pct variable, if the opp made playoffs, if the opp made WS, day of the week, and night/day games. Why do these improve the model / matching?
+
+# Balance Statistics for ATT after Matching
+
+```{r}
+# For full matching
+bal.tab(match_out_full_ATT_ANA)
+```
+
+> The number of matched cases is very high compared to the number of original observed cases in each treatment category. Only 23 from the orginal 2176 control cases were left unmatched, a very high number. Additionally, all treated cases were matched. This is great as our matching model isn't too specific or obscure and not many cases are left out from the analysis. 
+
+```{r}
+match_out_full_summ_ATT_ANA <- summary(match_out_full_ATT_ANA, interactions = TRUE)
+plot(match_out_full_summ_ATT_ANA)
+```
+
+> Based on the balance summary plot provided above it appears that our matching method with precise variables is great. None of the variables, nor their interactions, are significantly different from one another when matched. This means that all matched cases are within a desirable range that is more accurate than when matching is not used. Considering that a wide range of data was used throughout the years this is great and shows that good matches were found.  
+
+# Common Support Plot
+
+```{r}
+# Getting ps scores from full
+lalonde_with_ps_full_ATT_ANA <- ANA %>% 
+    mutate(ps = match_out_full_ATT_ANA$distance)
+
+# Plot for full matching ANA ATT implementation
+ggplot(lalonde_with_ps_full_ATT_ANA, aes(x = ps, fill = factor(Home))) +
+  geom_density(alpha = 0.25) +
+  theme_classic()
+```
+> The support plot is great and shows that the propensity score range is overlapped for both treatment and control groups. This essentially confirms that we are allowed to match based on this model and aren't cutting out any significiant data. The supports our analysis. 
+
+# Extracting the matched data and estimating ATT
+
+```{r}
+# Extract Data
+match_data_full_ATT_ANA <- match.data(match_out_full_ATT_ANA)
+
+# Regression Model based on this matched data
+mod2 <- lm(ANA_win ~ Home * (Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Attendance + Dow + Day_Night), data = match_data_full_ATT_ANA, weights = weights)
+
+# Estimating ATT from model
+avg_comparisons(
+    mod2,
+    variables = "Home",
+    vcov = ~subclass,
+    newdata = filter(match_data_full_ATT_ANA, Home == 1))
+```
+
+> For all Angle's home games, if they had been played away, we would expect their winning percentage to be 9.4% less. This equates to about 7.6 games, meaning the Angels would've lost about 8 games more if they had played every home game as an away game. 
+
+## Estimating ATC using full matching model
+
+```{r}
+# Matching method for ATC, using same precision variables
+match_out_full_ATC_ANA <- matchit(
+    Home ~ Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night,
+    data = ANA,
+    method = "full",
+    exact = ~ Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night,
+    distance = "glm",
+    estimand = "ATC"
+)
+```
+
+## Balance Statitics and Plot for ATC
+
+```{r}
+# Balance Table
+bal.tab(match_out_full_ATC_ANA)
+```
+
+> Same as above for ATT, only 23 cases in the control category are without matches.
+
+```{r}
+# Matched Summary
+match_out_full_summ_ATC_ANA <- summary(match_out_full_ATC_ANA, interactions = TRUE)
+match_out_full_summ_ATC_ANA
+```
+
+> Mean difference is zero for all variables and their interaction terms, which is much better than the summary of balance for all data. 
+
+```{r, fig.height= 15}
+# Plot visualizing what is described above
+plot(match_out_full_summ_ATC_ANA)
+```
+
+# Common Support Plot
+
+```{r}
+# Getting ps scores from full
+lalonde_with_ps_full_ATC_ANA <- ANA %>% 
+    mutate(ps = match_out_full_ATC_ANA$distance)
+
+# Plot for full matching ANA ATT implementation
+ggplot(lalonde_with_ps_full_ATC_ANA, aes(x = ps, fill = factor(Home))) +
+  geom_density(alpha = 0.25) +
+  theme_classic()
+```
+> Common support plot is the same, whihc was to be expected and makes sense. Again, this is a good sign for our analysis. 
+
+# Extracting Matched Data and Estimating ATC
+
+```{r}
+# Extract
+match_data_full_ATC_ANA <- match.data(match_out_full_ATC_ANA)
+
+# Model Creation
+mod3 <- lm(ANA_win ~ Home * (Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night), data = match_data_full_ATC_ANA, weights = weights)
+
+# Estimate
+avg_comparisons(
+    mod3,
+    variables = "Home",
+    vcov = ~subclass,
+    newdata = filter(match_data_full_ATC_ANA, Home == 0))
+```
+
+> For all Angel's away games, if they had been played at home, we would expect their winning percentage to be 6.6% greater. This equates to about 5.3 games, meaning the Angels would've won about 5 games more if they had played every away game as a home game. 
+
+# Estimating ATE using Matching
+
+```{r}
+# Matching method for ATE, using same precision variables
+match_out_full_ATE_ANA <- matchit(
+    Home ~ Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night,
+    data = ANA,
+    method = "full",
+    exact = ~ Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night,
+    distance = "glm",
+    estimand = "ATE"
+)
+```
+
+# Extracting and Estimating
+
+```{r}
+# Extracting
+match_data_full_ATE_ANA <- match.data(match_out_full_ATE_ANA)
+
+# Model for ATE
+mod4 <- lm(ANA_win ~ Home * (Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night), data = match_data_full_ATE_ANA, weights = weights)
+
+# Estimation
+avg_comparisons(
+    mod4,
+    variables = "Home",
+    vcov = ~subclass)
+```
+
+> If the Angels played every game away, we would expect the Angels win percentage to be 8% lower than if they played every game at home. This equates to about 12.93 games which means the Angels would win 13 games more if they played every game at home versus every game away. This is very interesting considering this could be the difference between winning your division and not making the playoffs. 
+
+# Conclusion
+
+For the Angels specifically, there is a relevant causal effect for playing at home on winning a specific game. We will analyze the other 29 teams and rank them for each category to further analyze the effect of being the home team on winning games. 
