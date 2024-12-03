@@ -1,6 +1,6 @@
 ---
 title: "Baseball Data Select" 
-author: "Evan Burns"
+author: "Group"
 date: "`r Sys.Date()`"
 output: html_document
 ---
