@@ -23,3 +23,4 @@ baseball_teams <- subset(baseball_teams, Year != 2020 & Year != 2021)
 write_csv(baseball_teams, "~/Desktop/Senior Year Work/Causal Inference/Baseball Data/Baseball_Teams_Clean")
 ```
 
+EVAN BURNS
