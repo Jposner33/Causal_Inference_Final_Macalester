@@ -107,7 +107,7 @@ for (abbr in names(team_files)) {
   dependent_var <- paste0(abbr, "_win")
   
   # Construct the formula dynamically
-  formula_str <- paste0(dependent_var, " ~ Home * (Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Attendance + Dow + Day_Night)")
+  formula_str <- paste0(dependent_var, " ~ Home * (Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night)")
   formula <- as.formula(formula_str)
   
   # Regression model based on matched data
@@ -208,7 +208,7 @@ for (abbr in names(team_files)) {
   dependent_var <- paste0(abbr, "_win")
   
   # Construct the formula dynamically
-  formula_str <- paste0(dependent_var, " ~ Home * (Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Attendance + Dow + Day_Night)")
+  formula_str <- paste0(dependent_var, " ~ Home * (Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night)")
   formula <- as.formula(formula_str)
   
   # Regression model based on matched data
@@ -307,7 +307,7 @@ for (abbr in names(team_files)) {
   dependent_var <- paste0(abbr, "_win")
   
   # Construct the formula dynamically
-  formula_str <- paste0(dependent_var, " ~ Home * (Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Attendance + Dow + Day_Night)")
+  formula_str <- paste0(dependent_var, " ~ Home * (Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night)")
   formula <- as.formula(formula_str)
   
   # Regression model based on matched data
