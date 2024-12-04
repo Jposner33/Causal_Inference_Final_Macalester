@@ -274,3 +274,15 @@ evalues.OR(est = 0.0803, lo = 0.0433, hi = 0.117, rare = 0) # outcome of winning
 ```
 
 > To explain away the observed causal effect, there would have to be an outstanding confounding variable that is 6.5 times more common in a team that wins than a team that loses. Winning would have to be 6.5 times more common in those that are affected by the confounding variable than those without it. This essentially says that our results are robust to unmeasured confounding variables. An unmeasured confounder would need to have an exceptionally strong relationship with home field and winning to explain away the observed effect on winning percentage. 
+
+# Risk Difference
+```{r}
+# E-value based on exposed, diseased, non-exposed, non-diseased
+n11 <- sum(ANA$Home==1 & ANA$ANA_win==1) # Home Game, Home Win
+n10 <- sum(ANA$Home==1 & ANA$ANA_win==0) # Home Game, Home Loss
+n01 <- sum(ANA$Home==0 & ANA$ANA_win==1) # Away Game, Away Win
+n00 <- sum(ANA$Home==0 & ANA$ANA_win==0) # Away Game, Away Loss
+
+evalues.RD(n11, n10, n01, n00, true = 0)
+```
+
