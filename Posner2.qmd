@@ -73,6 +73,7 @@ for (abbr in names(team_files)) {
       !is.na(Opp_WS),
       !is.na(Dow),
       !is.na(Day_Night),
+      !is.na(Away_SP_WAR)
     )
   
   # Skip if the filtered dataset is too small
@@ -83,7 +84,7 @@ for (abbr in names(team_files)) {
   
   # Matching Method for ATT
   match_out_full <- matchit(
-    Home ~ Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night,
+    Home ~ Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night + Away_SP_WAR,
     data = team_data,
     method = "full",
     exact = ~ Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night,
@@ -172,7 +173,8 @@ for (abbr in names(team_files)) {
       !is.na(Opp_Playoffs),
       !is.na(Opp_WS),
       !is.na(Dow),
-      !is.na(Day_Night)
+      !is.na(Day_Night), 
+      !is.na(Away_SP_WAR)
     )
   
   # Skip if the filtered dataset is too small
@@ -183,7 +185,7 @@ for (abbr in names(team_files)) {
   
   # Matching Method for ATC
   match_out_full_ATC <- matchit(
-    Home ~ Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night,
+    Home ~ Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night + Away_SP_WAR,
     data = team_data,
     method = "full",
     exact = ~ Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night,
@@ -270,7 +272,8 @@ for (abbr in names(team_files)) {
       !is.na(Opp_Playoffs),
       !is.na(Opp_WS),
       !is.na(Dow),
-      !is.na(Day_Night)
+      !is.na(Day_Night), 
+      !is.na(Away_SP_WAR)
     )
   
   # Skip if the filtered dataset is too small
@@ -281,7 +284,7 @@ for (abbr in names(team_files)) {
   
   # Matching Method for ATC
   match_out_full_ATE <- matchit(
-    Home ~ Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night,
+    Home ~ Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night + Away_SP_WAR,
     data = team_data,
     method = "full",
     exact = ~ Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night,
@@ -321,7 +324,7 @@ for (abbr in names(team_files)) {
   ate_results <- ate_results %>% mutate(Team = abbr)
   
   # Store results in the list
-  all_results[[abbr]] <- att_results
+  all_results[[abbr]] <- ate_results
 }
 
 # Combine all team-specific results into a single data frame
@@ -372,7 +375,7 @@ ATT_results<-ATT_results %>%
 
 ggplot(ATT_results)+
   geom_col(aes(x = win_if_away, y = Team, fill = CI_Crosses_Zero))+
-  labs(x = "Estimate Fewer Wins (If team played all 81 home games away)", y = "Team (Abv)", title = "Team Estimate Fewer Wins (ATT) by Team", fill = "Conf. Interval")+
+  labs(x = "Estimate Fewer Wins (If team played all 81 home games away)", y = "Team (Abv)", title = "Team Estimate Fewer Wins (ATT) by Team", fill = "Conf. Interval Crosses 0")+
   scale_x_continuous(breaks = scales::pretty_breaks(n = 13)) +
   scale_fill_viridis_d(option = "D")+
   theme_minimal()
@@ -429,7 +432,5 @@ MLB_wins_ATT %>%
 
 ```
 
-```{r}
-read.csv("Data/Team Datasets/ANA_games.csv")
-```
+
 
