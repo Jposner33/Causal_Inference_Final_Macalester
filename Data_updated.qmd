@@ -17,7 +17,7 @@ baseball_full <- read.csv("Data/Retrosheet.csv")
 
 team_win <- read.csv("Data/Season Results.csv")
 
-pitcher_war <- read.csv("Data/Pitcher WAR.csv") %>%
+pitcher_war <- read.csv("Data/Pitcher WAR final.csv") %>%
   select(-ID)
 
 baseball_setup <- subset(baseball_full, Year != 2020 & Year != 2021)

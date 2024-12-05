@@ -73,7 +73,8 @@ for (abbr in names(team_files)) {
       !is.na(Opp_WS),
       !is.na(Dow),
       !is.na(Day_Night),
-      !is.na(Away_SP_WAR)
+      !is.na(Away_SP_WAR), 
+      !is.na(Home_SP_WAR)
     )
   
   # Skip if the filtered dataset is too small
@@ -84,7 +85,7 @@ for (abbr in names(team_files)) {
   
   # Matching Method for ATT
   match_out_full <- matchit(
-    Home ~ Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night + Away_SP_WAR,
+    Home ~ Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night + Away_SP_WAR + Home_SP_WAR,
     data = team_data,
     method = "full",
     exact = ~ Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night,
@@ -107,7 +108,7 @@ for (abbr in names(team_files)) {
   dependent_var <- paste0(abbr, "_win")
   
   # Construct the formula dynamically
-  formula_str <- paste0(dependent_var, " ~ Home * (Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night)")
+  formula_str <- paste0(dependent_var, " ~ Home * (Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night + Away_SP_WAR + Home_SP_WAR)")
   formula <- as.formula(formula_str)
   
   # Regression model based on matched data
@@ -174,7 +175,8 @@ for (abbr in names(team_files)) {
       !is.na(Opp_WS),
       !is.na(Dow),
       !is.na(Day_Night), 
-      !is.na(Away_SP_WAR)
+      !is.na(Away_SP_WAR), 
+      !is.na(Home_SP_WAR)
     )
   
   # Skip if the filtered dataset is too small
@@ -185,7 +187,7 @@ for (abbr in names(team_files)) {
   
   # Matching Method for ATC
   match_out_full_ATC <- matchit(
-    Home ~ Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night + Away_SP_WAR,
+    Home ~ Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night + Away_SP_WAR + Home_SP_WAR,
     data = team_data,
     method = "full",
     exact = ~ Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night,
@@ -208,7 +210,7 @@ for (abbr in names(team_files)) {
   dependent_var <- paste0(abbr, "_win")
   
   # Construct the formula dynamically
-  formula_str <- paste0(dependent_var, " ~ Home * (Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night)")
+  formula_str <- paste0(dependent_var, " ~ Home * (Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night + Away_SP_WAR + Home_SP_WAR)")
   formula <- as.formula(formula_str)
   
   # Regression model based on matched data
@@ -273,7 +275,8 @@ for (abbr in names(team_files)) {
       !is.na(Opp_WS),
       !is.na(Dow),
       !is.na(Day_Night), 
-      !is.na(Away_SP_WAR)
+      !is.na(Away_SP_WAR), 
+      !is.na(Home_SP_WAR)
     )
   
   # Skip if the filtered dataset is too small
@@ -284,7 +287,7 @@ for (abbr in names(team_files)) {
   
   # Matching Method for ATC
   match_out_full_ATE <- matchit(
-    Home ~ Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night + Away_SP_WAR,
+    Home ~ Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night + Away_SP_WAR + Home_SP_WAR,
     data = team_data,
     method = "full",
     exact = ~ Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night,
@@ -307,7 +310,7 @@ for (abbr in names(team_files)) {
   dependent_var <- paste0(abbr, "_win")
   
   # Construct the formula dynamically
-  formula_str <- paste0(dependent_var, " ~ Home * (Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night)")
+  formula_str <- paste0(dependent_var, " ~ Home * (Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night + Away_SP_WAR + Home_SP_WAR)")
   formula <- as.formula(formula_str)
   
   # Regression model based on matched data
@@ -366,7 +369,6 @@ ggplot(ATT_results)+
   labs(x = "Estimate (ATT %)", y = "Team (Abv)", title = "Team ATT Estimates with Confidence Intervals", color = "Conf. Interval")+
   scale_color_viridis_d(option = "D")+
   theme_minimal()
-
 ```
 
 ```{r}
@@ -384,6 +386,7 @@ ggplot(ATT_results)+
 
 
 ```{r}
+# Need to fix
 MLB_wins<-read.csv("Data/MLB_2024_Standings.csv") %>% 
   rename(Team = Team.Abbreviation)
 

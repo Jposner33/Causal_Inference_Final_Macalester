@@ -67,10 +67,10 @@ for (abbr in names(team_files)) {
   
   # Store the result in the list
   evalues_results[[abbr]] <- list(
-    n11 = n11,
-    n10 = n10,
-    n01 = n01,
-    n00 = n00,
+    home_win = n11,
+    home_loss = n10,
+    away_win = n01,
+    away_loss = n00,
     evalue = evalue
   )
 }
@@ -83,10 +83,10 @@ for (abbr in names(team_files)) {
 evalues_table <- do.call(rbind, lapply(names(evalues_results), function(abbr) {
   data.frame(
     Team = abbr,
-    n11 = evalues_results[[abbr]]$n11,
-    n10 = evalues_results[[abbr]]$n10,
-    n01 = evalues_results[[abbr]]$n01,
-    n00 = evalues_results[[abbr]]$n00,
+    home_win = evalues_results[[abbr]]$home_win,
+    home_loss = evalues_results[[abbr]]$home_loss,
+    away_win = evalues_results[[abbr]]$away_win,
+    away_loss = evalues_results[[abbr]]$away_loss,
     est_EValue = evalues_results[[abbr]]$evalue[1], # Extract the main E-value
     low_EValue = evalues_results[[abbr]]$evalue[2] # Extract the low E-value
   )
