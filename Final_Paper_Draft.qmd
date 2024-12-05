@@ -1,5 +1,6 @@
 ---
-title: "How does home-field advantage causally affect large-market teams compared to small-market teams?"
+title: "The Reality of Home-Field Advantage"
+subtitle: "Quantifying the Effect of Playing at Home in Major League Baseball"
 authors: "Jacob Posner, Evan Burns, Bowman Wingard, Cameron Latvis"
 format: 
   html:
@@ -8,34 +9,87 @@ format:
     theme: cerulean
 ---
 
-# Introduction
+## Introduction
 
-    Home-field advantage is a widely debated topic in the world of sports, especially in baseball. While many fans, experts, and players believe that the home team benefits significantly, others question the extent of its impact. The concept has been discussed for years, with people on both sides weighing in on how much of a difference playing at home actually makes.
+    Home-field advantage is a widely debated topic in sports, especially baseball. While many fans, experts, and players believe that the home team benefits significantly, others question the extent of its impact. The concept has been discussed for years, with people on both sides weighing in on how much of a difference playing at home actually makes.
 
-    Several factors are believed to boost a home team’s chances of winning, including fan attendance, stadium atmosphere, weather conditions, official bias, and reduced travel-related fatigue. In baseball, a unique component of home-field advantage is the ability to bat last, which gives the home team the final opportunity to respond in close games. Some believe that this is an advantage while others believe that being able to bat first outweighs batting last. Other details, such as choosing which dugout to occupy, may seem minor but can contribute to players’ comfort and familiarity with their surroundings.
+    Several factors are believed to boost a home team’s chances of winning, including fan attendance, stadium atmosphere, weather conditions, official bias, and reduced travel-related fatigue. In baseball, a unique component of home-field advantage is the ability to bat last, which gives the home team the final opportunity to respond in close games. Some believe this is an advantage while others believe that being able to bat first outweighs batting last. Other details, such as choosing which dugout to occupy, may seem minor but can contribute to players’ comfort and familiarity with their surroundings.
 
     The effect of these factors varies depending on the team, stadium, and location, with some teams benefiting more than others. For instance, fan support can fuel the home team’s energy and morale, creating an intimidating atmosphere for visiting teams. Additionally, familiarity with the field's unique dimensions and quirks, such as outfield wall height or irregular field boundaries, can provide a strategic edge to the home team.
 
-    Some argue that these factors, while impactful, may have only a marginal effect on game outcomes. Others believe that, especially in high-stakes games, even a small advantage can tip the balance. Recent data analyses attempt to measure home-field advantage objectively, looking at win percentages, score differentials, and player performance, among other metrics, to understand just how much these factors influence game results. Based on this information, we aim to establish a causal relationship showing that home-field advantage has a stronger effect on winning percentage for larger than smaller market teams. This topic begs the question of whether home-field advantage matters, especially if it makes a difference for teams with more money than less money.
+    Some argue that these factors, while impactful, may have only a marginal effect on game outcomes. Others believe that, especially in high-stakes games, even a small advantage can tip the balance. Recent data analyses attempt to measure home-field advantage objectively, looking at win percentages, score differentials, and player performance, among other metrics, to understand just how much these factors influence game results. Based on this information, we aim to establish a causal relationship showing that home-field advantage affects certain teams more than others and evaluate the possible reasons for differences between teams. 
 
-# Literature Review
 
-    Home-field advantage is a topic of ongoing debate in sports research, with numerous studies examining its impact across various sports and competitive contexts. While there is a broad consensus that playing at home provides certain benefits, the degree and mechanisms of this advantage remain subjects of inquiry. Researchers have explored factors like fan presence, reduced travel demands, and even environmental familiarity, but findings often vary by sport, league, setting, and even team.
+## Literature Review
 
-    Scholars and experts boast different views on the subject, as some believe that home-field advantage strongly affects win percentage while others disagree. The Home Field Advantage in Athletics: A Meta-Analysis examines the home-field advantage (HFA) in sports, focusing on factors that influence its magnitude (Jamieson, 2010). Jamieson notes that the overall winning percentage for home teams, in sports that were a part of the analysis, was about 60%, with soccer being the highest and baseball being the lowest. Jamieson notices that this could potentially be due to baseball having a significantly longer season, thus also noting that sports with shorter seasons have higher HFA. Jamieson also notes that crowd size, density, and behavior amplify HFA, especially in sports with vocal, supportive fans, such as baseball. Fans will boo their team when they aren’t succeeding, but will also cheer against the opposing team, which can often impact the opposing team’s performance. Another point Jamieson makes is that athletes generally report higher motivation and confidence at home, with crowd support possibly aiding performance in procedural skills. An example of this is Trea Turner, a player for the Philadelphia Phillies. In 2023, he was performing the worst in his career. The Philadelphia fans organized a standing ovation for him at one of the Phillies home games. After this ovation, his season turned around and he helped lead the Phillies to the playoffs. Examples like this one and Jamieson’s research show how having home-field advantage can impact a team’s winning percentage.
+    Home-field advantage is a topic of ongoing debate in sports research, with numerous studies examining its impact across various sports and competitive contexts. While there is a broad consensus that playing at home provides certain benefits, the degree and mechanisms of this advantage remain subjects of inquiry. Researchers have explored factors like fan presence, reduced travel demands, and even environmental familiarity, but findings often vary by sport, league, setting, and even team. 
 
+    Scholars and experts boast different views on the subject, as some believe that home-field advantage strongly affects win percentage while others disagree. The Home Field Advantage in Athletics: A Meta-Analysis examines the home-field advantage (HFA) in sports, focusing on factors that influence its magnitude (Jamieson, 2010). Jamieson notes that the overall winning percentage for home teams, in sports that were a part of the analysis, was about 60%, with soccer being the highest and baseball being the lowest. Jamieson notices that this could potentially be due to baseball having a significantly longer season, thus also noting that sports with shorter seasons have higher HFA. Jamieson also notes that crowd size, density, and behavior amplify HFA, especially in sports with vocal, supportive fans, such as baseball. Fans will boo their team when they aren’t succeeding, but will also cheer against the opposing team, which can often impact the opposing team’s performance. Another point Jamieson makes is that athletes generally report higher motivation and confidence at home, with crowd support possibly aiding performance in procedural skills. An example of this is Trea Turner, a player for the Philadelphia Phillies. In 2023, he was performing the worst in his career. The Philadelphia fans organized a standing ovation for him at one of the Phillies home games. After this ovation, his season turned around and he helped lead the Phillies to the playoffs. Examples like this one and Jamieson’s research show how having home-field advantage can impact a team’s winning percentage. 
+	
     "Home Field (Dis)Advantage and the 'Last-Ups' Effect" by Stephen Shmanske and Franklin Lowenthal investigates the impact of the "last-ups" rule in baseball, where the home team bats last, on home-field advantage. Many fans, experts, and players believe that a team has an advantage in being able to bat last because it knows how many runs need to be scored. Shmanske and Lowenthal argue against this claim by using close games and extra-inning games to examine strategic advantages. They suggest, that while the home team might benefit from knowing the visitor’s score before batting, the visiting team can adapt its defensive strategies in the final inning to counter this. Lowenthal and Shmanske use regression analysis to study the 2002-2004 seasons. Their study suggests that home teams are slightly more likely to win by one run, however, there is no significant effect of "last-ups" on overall HFA. Overall, the study challenges the belief that batting last provides a substantial advantage, finding instead that defensive adaptations may negate any offensive benefits in critical situations, contributing to baseball’s lower HFA relative to other sports.
 
-    "Major League Baseball during the COVID-19 pandemic: does a lack of spectators affect home advantage?" by Yung-Chin Chiu and Chen-Kang Chang examines the effect of fan attendance in the MLB. They use COVID-19 as an example of when fans weren’t allowed to attend games. They compare the 2020 season to the 2015-2019 seasons. Their results showed no statistically significant change in HFA during the spectator-free 2020 season, suggesting that crowd presence may not be a major factor in MLB's HFA. However, the study notes potential confounding factors in 2020, including altered schedules, new rules, and pandemic-related psychological stress on players, which may have affected results. Possible explanations for this result could include that MLB’s relatively stable HFA may stem from factors such as team familiarity with facilities and travel-related fatigue, which are less influenced by spectators. Overall, the study supports the idea that MLB’s HFA is less crowd-dependent compared to other sports.
+    "Major League Baseball during the COVID-19 pandemic: does a lack of spectators affect home advantage?" by Yung-Chin Chiu and Chen-Kang Chang examines the effect of fan attendance in the MLB. They use COVID-19 as an example of when fans weren’t allowed to attend games. They compare the 2020 season to the 2015-2019 seasons. Their results showed no statistically significant change in HFA during the spectator-free 2020 season, suggesting that crowd presence may not be a major factor in MLB's HFA. However, the study notes potential confounding factors in 2020, including altered schedules, new rules, and pandemic-related psychological stress on players, which may have affected results. Possible explanations for this result could include that MLB’s relatively stable HFA may stem from factors such as team familiarity with facilities and travel-related fatigue, which are less influenced by spectators.
+Overall, the study supports the idea that MLB’s HFA is less crowd-dependent compared to other sports.
 
-    "The Home Field Advantage: Implications for the Pricing of Tickets to Professional Team Sporting Events" by David W. Boyd and Laura A. Boyd discusses the economic implications of home-field advantage on ticket pricing for professional sports events. The study explores how home-field advantage can influence the demand for tickets, noting that fans are more likely to attend games where the home team has a higher chance of winning. This demand can be influenced by the strength of the home team and the perceived advantage provided by playing at home. Their study finds that ticket demand and pricing are indeed affected by home-field advantage. Attendance tends to be positively correlated with the home team’s past performance and other factors that enhance home advantage. This also brings up the point that ticket prices can positively or negatively influence fan attendance. If ticket prices are too high, fans may choose not to attend the games, resulting in a lower HFA for the team. The study provides insights into how home-field advantage can be leveraged in ticket pricing strategies, but also how ticket prices could affect fan attendance and in turn affect HFA.
+    "The Home Field Advantage: Implications for the Pricing of Tickets to Professional Team Sporting Events" by David W. Boyd and Laura A. Boyd discusses the economic implications of home-field advantage on ticket pricing for professional sports events. The study explores how home-field advantage can influence the demand for tickets, noting that fans are more likely to attend games where the home team has a higher chance of winning. This demand can be influenced by the strength of the home team and the perceived advantage provided by playing at home. Their study finds that ticket demand and pricing are indeed affected by home-field advantage. Attendance tends to be positively correlated with the home team’s past performance and other factors that enhance home advantage. This also brings up the point that ticket prices can positively or negatively influence fan attendance. If ticket prices are too high, fans may choose not to attend the games, resulting in a lower HFA for the team. The study provides insights into how home-field advantage can be leveraged in ticket pricing strategies, but also how ticket prices could affect fan attendance and in turn affect HFA. 
 
-    Through these experts’ research and our data, we can look into different perspectives surrounding home-field advantage and how it could causally affect winning percentages for large and small market teams.
+    Through these experts’ research and our data, we can look into different perspectives surrounding home-field advantage and how it could causally affect the winning percentages of certain teams over other teams and the potential reasons that arise. 
 
-# Data 
+## Data 
 
     We collected data from Retrosheet, a database that tracks and stores Major League Baseball data at the game level. We gathered data on each regular season baseball game from 1995 to 2023. Each game’s data contains variables such as the date, team information, stadium information, attendance, score, team stats, umpire information, and pitcher information. This is important because the data gives us an abundance of information to match or weigh on if we choose to go down those paths. The dimensions of our dataset are 68185 observations of 175 variables. 
 
-    We performed several filters from here to produce the final dataset we will use for our analysis. First, we only included games that our teams of interest were playing. We use four large market teams (Yankees, Dodgers, Red Sox, and Cubs) and four small market teams (Reds, Royals, Athletics, and Marlins). We planned on using the four most and four least valuable teams, however, we decided to ignore the fourth smallest team, the Rays, because they were founded in 1998, after the onset of our research, which began in 1995. Another adjustment we made is to treat the Florida Marlins and the Miami Marlins as the same team. They are the same franchise but were renamed in 2012. In the data, the two names are coded differently. We will be working around this. For our purposes, we will be treating both names as the Miami Marlins. 
+    We also gathered several other pieces of information such as pitcher WAR (Wins Above Replacement), a stat that calculates a player's worth against the average player, and team information from every year, such as if they made the playoffs or won the World Series that year. This information was found on Baseball-Reference. 
 
-    Lastly, we chose to exclude the years 2020 and 2021 from our analysis. Since we are concerned with home-field advantage, we anticipate a portion of home-field advantage to stem from fans attending games and making their presence felt. Because of the pandemic, there was extremely limited attendance in these two years, which is why we are excluding these years. Our final, completely cleaned dataset has 31,458 observations of 175 variables.
+    We performed several filters from here to produce the final dataset we will use for our analysis. First, we only included games were included in the regular season. We made some adjustments by team as well. For example, we are analyzing the years 1995 and after, however, the Tampa Bay Rays became a team in 1998 so we only could gather data starting that year. Another adjustment we made is to treat the Florida Marlins and the Miami Marlins as the same team because they are the same franchise but were renamed in 2012. In the data, the two names are coded differently and are working around it by naming both the Miami Marlins. We also made some other changes to help make it easier to add confounding variables. We added binary categories for opposing team statistics that can help us control for certain variables as well as adding player-specific statistics to help with the analysis. 
+
+    All three data sets were joined together to produce a final data set. We then made a new data set for each team so we could complete an analysis of each team. We chose to exclude the years 2020 and 2021 from our analysis. Since we are concerned with home-field advantage, we anticipate a portion of home-field advantage to stem from fans attending games and making their presence felt. Because of the pandemic, there was extremely limited attendance in these two years, which is why they are excluded from our data sets. We have a total of 30 data sets; one for each MLB team, and will analyze them individually and compare them to each other. 
+
+## Dag Plot
+
+```{r}
+# Define the DAG
+dag <- dagitty('
+dag {
+  bb="-8,-6,10,0"
+  "Day/Night" [pos="2.887,-4.914"]
+  "Home (treatment)" [exposure,pos="-6.498,-4.544"]
+  "Opponent Skill" [pos="5.682,-4.867"]
+  "Opponent Starter" [pos="7.232,-4.833"]
+  Attendance [pos="0.745,-4.633"]
+  Comfort [pos="-2.499,-4.360"]
+  DOW [pos="4.315,-4.915"]
+  Umpire [pos="8.232,-4.873"]
+  Win [outcome,pos="7.191,-4.503"]
+  performance [pos="1.153,-4.174"]
+
+  "Day/Night" -> Attendance
+  "Home (treatment)" -> Comfort
+  "Opponent Skill" -> Win
+  "Opponent Starter" -> Win
+  Attendance -> Comfort
+  Comfort -> Win
+  Comfort -> performance
+  DOW -> Attendance
+  Umpire -> Win
+  performance -> Win
+}
+')
+
+# Plot the DAG
+plot(dag)
+```
+
+    The diagram represents a causal model for examining the factors influencing a team's likelihood of winning a game. Playing at home is treated as the primary "treatment" and directly affects the team's comfort, which in turn influences performance and the outcome (win). Home games also impact attendance, which is connected to comfort and winning. Attendance itself is shaped by external factors, including whether the game is day or night, the day of the week, the opponent's skill level, and the specific opponent. Other variables, such as the umpire and the starting pitcher, directly influence the game's outcome. Together, these factors highlight the complex pathways through which home advantage, external conditions, and game dynamics contribute to the likelihood of winning. 
+
+## Methods
+
+what we matched on
+why we matched on it
+full matching vs exact
+loops
+sens analysis 
+
+## Analysis and Results
+
+## Conclusions
