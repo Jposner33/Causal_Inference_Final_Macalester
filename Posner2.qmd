@@ -372,12 +372,11 @@ ggplot(ATT_results)+
 ```
 
 ```{r}
-ATT_results<-ATT_results %>% 
-  mutate(win_if_away = round(estimate * 81))
-
-ggplot(ATT_results)+
-  geom_col(aes(x = win_if_away, y = Team, fill = CI_Crosses_Zero))+
-  labs(x = "Estimate Fewer Wins (If team played all 81 home games away)", y = "Team (Abv)", title = "Team Estimate Fewer Wins (ATT) by Team", fill = "Conf. Interval Crosses 0")+
+MLB_wins_ATT2023 %>% 
+  mutate(difference = total_wins - Att_total_wins) %>% 
+  ggplot()+
+  geom_col(aes(x = difference, y = Team, fill = CI_Crosses_Zero))+
+  labs(x = "Estimate Fewer Wins in 2023 if All Games Untreated", y = "Team (Abv)", title = "Team Estimated Wins if All Games Untreated", fill = "Conf. Interval Crosses 0")+
   scale_x_continuous(breaks = scales::pretty_breaks(n = 13)) +
   scale_fill_viridis_d(option = "D")+
   theme_minimal()
@@ -387,47 +386,50 @@ ggplot(ATT_results)+
 
 ```{r}
 # Need to fix
-MLB_wins<-read.csv("Data/MLB_2024_Standings.csv") %>% 
-  rename(Team = Team.Abbreviation)
+MLB_wins2023<-read.csv("Data/MLB_2023_Team_Records.csv") %>% 
+  rename(Team = Abbreviation)
 
-MLB_wins_ATT<-ATT_results %>% 
-  left_join(MLB_wins)
+MLB_wins_ATT2023<-ATT_results %>% 
+  left_join(MLB_wins2023) %>% 
+  mutate(total_wins = Home.Wins + Away.Wins) %>% 
+  mutate(home_wpct = Home.Wins/(Home.Wins+Home.Losses)) %>% 
+  mutate(away_wpct = Away.Wins/(Away.Wins+Away.Losses)) %>% 
+  mutate(ATT_home_wpct = home_wpct - estimate) %>%  
+  mutate(Att_total_wins = round((81 * ATT_home_wpct) + Away.Wins))
+  
 
-MLB_wins_ATT %>%
-  mutate(
-    ATT_wins = Total.Wins - win_if_away,
-    Team = fct_reorder(Team, ATT_wins)
-  ) %>% 
-  filter(League == "American League") %>% 
+MLB_wins_ATT2023 %>%
+  filter(League == "AL") %>% 
+  arrange(desc(Att_total_wins)) %>%  # Arrange by ATT wins in descending order
+  mutate(Team = factor(Team, levels = rev(unique(Team)))) %>%  # Reorder factor levels
   ggplot() +
-  geom_col(aes(x = Total.Wins, y = Team, fill = "Total Wins"), alpha = 0.7) + 
-  geom_col(aes(x = ATT_wins, y = Team, fill = "ATT Wins"), alpha = 0.7) +
+  geom_col(aes(x = total_wins, y = Team, fill = "Actual Wins"), alpha = 0.7) + 
+  geom_col(aes(x = Att_total_wins, y = Team, fill = "Wins if All Games Untreated"), alpha = 0.7) +
   scale_fill_manual(
-    name = "Win Type",
-    values = c("ATT Wins" = viridis(2)[1], "Total Wins" = viridis(2)[2])
+    name = "Win Category",
+    values = c("Wins if All Games Untreated" = viridis(2)[1], "Actual Wins" = viridis(2)[2])
   ) +
   labs(
-    title = "Comparison of Total Wins and Wins at Home",
+    title = "Total Wins vs. If All Games Untreated in 2023 for AL Teams",
     x = "Wins",
     y = "Team"
   ) +
   theme_minimal()
 
-MLB_wins_ATT %>%
-  mutate(
-    ATT_wins = Total.Wins - win_if_away,
-    Team = fct_reorder(Team, ATT_wins)
-  ) %>% 
-  filter(League == "National League") %>% 
+
+MLB_wins_ATT2023 %>%
+  filter(League == "NL") %>% 
+  arrange(desc(Att_total_wins)) %>%  # Arrange by ATT wins in descending order
+  mutate(Team = factor(Team, levels = rev(unique(Team)))) %>%  # Reorder factor levels
   ggplot() +
-  geom_col(aes(x = Total.Wins, y = Team, fill = "Total Wins"), alpha = 0.7) +
-  geom_col(aes(x = ATT_wins, y = Team, fill = "ATT Wins"), alpha = 0.7) +  
+  geom_col(aes(x = total_wins, y = Team, fill = "Actual Wins"), alpha = 0.7) + 
+  geom_col(aes(x = Att_total_wins, y = Team, fill = "Wins if All Games Untreated"), alpha = 0.7) +
   scale_fill_manual(
-    name = "Win Type",
-    values = c("ATT Wins" = viridis(2)[1], "Total Wins" = viridis(2)[2])
+    name = "Win Category",
+    values = c("Wins if All Games Untreated" = viridis(2)[1], "Actual Wins" = viridis(2)[2])
   ) +
   labs(
-    title = "Comparison of Total Wins vs. Wins if All Away in AL",
+    title = "Total Wins vs. If All Games Untreated in 2023 for NL Teams",
     x = "Wins",
     y = "Team"
   ) +
@@ -436,4 +438,10 @@ MLB_wins_ATT %>%
 ```
 
 
+```{r}
+ATT_results
+ATC_results
+ATE_results
+0.09397138-0.06560998
+```
 
