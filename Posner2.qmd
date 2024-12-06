@@ -376,7 +376,7 @@ MLB_wins_ATT2023 %>%
   mutate(difference = total_wins - Att_total_wins) %>% 
   ggplot()+
   geom_col(aes(x = difference, y = Team, fill = CI_Crosses_Zero))+
-  labs(x = "Estimate Fewer Wins in 2023 if All Games Untreated", y = "Team (Abv)", title = "Team Estimated Wins if All Games Untreated", fill = "Conf. Interval Crosses 0")+
+  labs(x = "Estimate Fewer Wins in 2023 if All Games Untreated", y = "Team (Abv)", title = "Team Estimated Wins if All Games Untreated in 2023", fill = "Conf. Interval Crosses 0")+
   scale_x_continuous(breaks = scales::pretty_breaks(n = 13)) +
   scale_fill_viridis_d(option = "D")+
   theme_minimal()
