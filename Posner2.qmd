@@ -355,18 +355,19 @@ ATE_results <- as.data.frame(final_results3) %>%
 ATE_results
 ```
 
-
+# Writing .csv files for all information
 ```{r}
 write.csv(ATE_results, "ATE_results.csv", row.names = FALSE)
 write.csv(ATT_results, "ATT_results.csv", row.names = FALSE)
 write.csv(ATC_results, "ATC_results.csv", row.names = FALSE)
 ```
 
+# Example ATT plots
 ```{r}
 ggplot(ATT_results)+
   geom_linerange(aes(xmin = conf.low, xmax = conf.high, , y = Team, color = CI_Crosses_Zero))+
   geom_point(aes(x=estimate, y=Team))+
-  labs(x = "Estimate (ATT %)", y = "Team (Abv)", title = "Team ATT Estimates with Confidence Intervals", color = "Conf. Interval")+
+  labs(x = "Estimate (ATT)", y = "Team (Abv)", title = "Team ATT Estimates with Confidence Intervals", color = "Conf. Interval")+
   scale_color_viridis_d(option = "D")+
   theme_minimal()
 ```
@@ -385,7 +386,8 @@ MLB_wins_ATT2023 %>%
 
 
 ```{r}
-# Need to fix
+# ATT viz
+
 MLB_wins2023<-read.csv("Data/MLB_2023_Team_Records.csv") %>% 
   rename(Team = Abbreviation)
 
@@ -437,11 +439,79 @@ MLB_wins_ATT2023 %>%
 
 ```
 
+# Example Atc plots 
 
 ```{r}
-ATT_results
-ATC_results
-ATE_results
-0.09397138-0.06560998
+# ATC viz
+
+MLB_wins2023<-read.csv("Data/MLB_2023_Team_Records.csv") %>% 
+  rename(Team = Abbreviation)
+
+MLB_wins_ATC2023<-ATC_results %>% 
+  left_join(MLB_wins2023) %>% 
+  mutate(total_wins = Home.Wins + Away.Wins) %>% 
+  mutate(home_wpct = Home.Wins/(Home.Wins+Home.Losses)) %>% 
+  mutate(away_wpct = Away.Wins/(Away.Wins+Away.Losses)) %>% 
+  mutate(ATC_away_wpct = away_wpct - estimate) %>% 
+  mutate(Atc_total_wins = round((81 * ATC_away_wpct) + Home.Wins))
+  
+
+MLB_wins_ATC2023 %>%
+  filter(League == "AL") %>% 
+  arrange(desc(Atc_total_wins)) %>%  # Arrange by ATT wins in descending order
+  mutate(Team = factor(Team, levels = rev(unique(Team)))) %>%  # Reorder factor levels
+  ggplot() +
+  geom_col(aes(x = total_wins, y = Team, fill = "Actual Wins"), alpha = 0.7) + 
+  geom_col(aes(x = Atc_total_wins, y = Team, fill = "Wins if All Games Treated"), alpha = 0.7) +
+  scale_fill_manual(
+    name = "Win Category",
+    values = c("Wins if All Games Treated" = viridis(2)[1], "Actual Wins" = viridis(2)[2])
+  ) +
+  labs(
+    title = "Total Wins vs. If All Games Treated in 2023 for AL Teams",
+    x = "Wins",
+    y = "Team"
+  ) +
+  theme_minimal()
+
+
+MLB_wins_ATC2023 %>%
+  filter(League == "NL") %>% 
+  arrange(desc(Atc_total_wins)) %>%  # Arrange by ATT wins in descending order
+  mutate(Team = factor(Team, levels = rev(unique(Team)))) %>%  # Reorder factor levels
+  ggplot() +
+  geom_col(aes(x = total_wins, y = Team, fill = "Actual Wins"), alpha = 0.7) + 
+  geom_col(aes(x = Atc_total_wins, y = Team, fill = "Wins if All Games Treated"), alpha = 0.7) +
+  scale_fill_manual(
+    name = "Win Category",
+    values = c("Wins if All Games Treated" = viridis(2)[1], "Actual Wins" = viridis(2)[2])
+  ) +
+  labs(
+    title = "Total Wins vs. If All Games Treated in 2023 for NL Teams",
+    x = "Wins",
+    y = "Team"
+  ) +
+  theme_minimal()
+
 ```
 
+```{r}
+ggplot(ATC_results)+
+  geom_linerange(aes(xmin = conf.low, xmax = conf.high, , y = Team, color = CI_Crosses_Zero))+
+  geom_point(aes(x=estimate, y=Team))+
+  labs(x = "Estimate (ATT)", y = "Team (Abv)", title = "Team ATT Estimates with Confidence Intervals", color = "Conf. Interval")+
+  scale_color_viridis_d(option = "D")+
+  theme_minimal()
+```
+
+```{r}
+MLB_wins_ATC2023 %>% 
+  mutate(difference = total_wins - Atc_total_wins) %>% 
+  ggplot()+
+  geom_col(aes(x = difference, y = Team, fill = CI_Crosses_Zero))+
+  labs(x = "Estimate Fewer Wins in 2023 if All Games Treated", y = "Team (Abv)", title = "Team Estimated Wins if All Games Treated in 2023", fill = "Conf. Interval Crosses 0")+
+  scale_x_continuous(breaks = scales::pretty_breaks(n = 13)) +
+  scale_fill_viridis_d(option = "D")+
+  theme_minimal()
+
+```
