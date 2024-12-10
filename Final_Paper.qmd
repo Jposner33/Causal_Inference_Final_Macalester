@@ -25,7 +25,6 @@ knitr::opts_chunk$set(
 library(dplyr)
 library(tidyverse)
 library(ggplot2)
-library(tidyverse)
 library(broom)
 library(MatchIt)
 library(marginaleffects)
@@ -169,7 +168,7 @@ ATT_results %>%
   select(Team, estimate, conf.low, conf.high, CI_Crosses_Zero)
 ```
 
-    Colorado has the largest estimate at about .15, which means that for all games in our analysis, if Colorado played every home game as an away game, its winning percentage would decrease by .15, or it would win 15% fewer games. This contextually makes sense because Colorado plays at a very high altitude, which increases the flight of the ball. Colorado can use this to its advantage, and sign more hitters that hit the ball in the air to increase its home runs. Colorado is also used to the altitude because it trains at high altitudes year round and is more used to it than its opponents. Toronto and the New York Yankees also have estimates over .1, which indicates that both teams also have significant home field advantage over other teams. 
+    Colorado has the largest estimate at about .14, which means that for all games in our analysis, if Colorado played every home game as an away game, its winning percentage would decrease by .14, or it would win 14% fewer games. This contextually makes sense because Colorado plays at a very high altitude, which increases the flight of the ball. Colorado can use this to its advantage, and sign more hitters that hit the ball in the air to increase its home runs. Colorado is also used to the altitude because it trains at high altitudes year round and is more used to it than its opponents. The Los Angeles Dodgers and the New York Yankees also have estimates over .1, which indicates that both teams also have a significant home field advantage over other teams. 
 
 ```{r}
 ATT_results %>% 
@@ -178,9 +177,7 @@ ATT_results %>%
   select(Team, estimate, conf.low, conf.high, CI_Crosses_Zero)
 ```
 
-    Looking at a low estimate, we can see that Baltimore has an estimate of about .041, which means that for all games in our analysis, if Baltimore played every home game as an away game, its winning percentage would decrease by about .041, or it would win about 4% fewer games. This means that there is no real change between a home game and an away game for Baltimore, thus it doesn't have a large home field advantage. Cincinnati and Atlanta also have low estimates, however, Cincinnati's confidence interval crosses 0, which means its estimate isn't significant. 
-
-    An interesting case in our analysis for the ATT is the Chicago Cubs (CHN). The Cubs estimate is about .047, but its confidence interval ranges from about -.066 to about .161. This could be the case for several reasons, however, it is most likely due to inconsistencies in Chicago's games and the variables we matched on. Looking at the Cubs, we can see that there are 126 unmatched cases, which is larger than most teams, which were almost all under 40. 
+    Looking at a low estimate, we can see that Baltimore has an estimate of about .043, which means that for all games in our analysis, if Baltimore played every home game as an away game, its winning percentage would decrease by about .043, or it would win about 4% fewer games. This means that there is no real change between a home game and an away game for Baltimore, thus it doesn't have a large home field advantage. Cincinnati and Kansas City also have low estimates, however, all confidence intervals cross 0, which means its estimate isn't significant. 
 
     Let's apply these estimates to the 2023 season. Because we included a wide range of years for our sample, we can generalize the results for one year in our data set. Below is a plot of the teams in the National League and the total wins for each team as well as their total wins if we applied the ATT estimate. To calculate the ATT estimated wins, or total wins if every game is untreated, we found the winning percentage for each team's home games and subtracted the estimate from that number. We then multiplied the new percentage by 81 and rounded to the nearest win to get the new number of home wins. Finally, we then added that number to the away wins to get the total wins if every game was untreated. Below is the plot showing what the National League standings would have looked like if every game was untreated, and includes the original wins as well. 
 
@@ -218,7 +215,7 @@ MLB_wins_ATT2023 %>%
 
 ```
 
-    Our results show that home field advantage has some effect on the standings in 2023. Miami, which was the 5th best team in the National League and made the playoffs, would've dropped to the 9th best team and missed the playoffs, while another team would've made the playoffs in Miami's place. Cincinnati also moved up a couple of spots and made the playoffs in this scenario. After seeing these results, we can see that while home field advantage affect a single game outcome, it can also affect whether or not a team makes the playoffs. 
+    Our results show that home field advantage has some effect on the standings in 2023. Arizona, which was the 5th best team in the National League and made the playoffs, would've dropped to the 9th best team and missed the playoffs, while another team would've made the playoffs in Miami's place. Cincinnati also moved up a couple of spots and made the playoffs in this scenario. After seeing these results, we can see that while home field advantage affect a single game outcome, it can also affect whether or not a team makes the playoffs. 
 
 ### ATC
 
@@ -244,7 +241,7 @@ ATC_results %>%
   select(Team, estimate, conf.low, conf.high, CI_Crosses_Zero)
 ```
 
-    Miami has the largest estimate at about .13, which means that for all games in our analysis, if Miami played every away game as a home game, its winning percentage would increase by about .13, or it would win 13% more games. This contextually makes sense because Miami plays at a very low altitude, which decreases the flight of the ball making it a very pitcher friendly ballpark. Miami can use this to its advantage by signing different types of hitters or by spending more money on good pitchers than hitters. Miami is used to its ballpark conditions, and it could have an impact on its winning percentage at home. Texas and San Francisco also have estimates over .1, which indicates that both teams also have significant home field advantage over other teams. 
+    Consistent with our ATT results, Colorado has the largest estimate at about .17, which means that for all games in our analysis, if Colorado played every away game as a home game, its winning percentage would increase by about .17, or it would win 17% more games. As mentioned previously, this contextually makes sense because Colorado plays at a very high altitude, which increases the flight of the ball making it a very hitter friendly ballpark. Colorado can use this to its advantage by signing different types of hitters or by spending more money on good hitters than pitchers. Colorado is used to its ballpark conditions, and it could have an impact on its winning percentage at home. Toronto and Tampa Bay also have estimates over .1, which indicates that both teams also have significant home field advantage over other teams. This could be due to the fact that both teams have domes on their stadium, changing different playing factors. 
 
 ```{r}
 ATC_results %>% 
@@ -253,9 +250,9 @@ ATC_results %>%
   select(Team, estimate, conf.low, conf.high, CI_Crosses_Zero)
 ```
 
-    The Cincinnati Reds have the lowest positive estimate where the confidence interval doesn't cross 0 at about .04. This means for all games in our analysis, if Cincinnati played every away game as a home game, its winning percentage would increase by about .04, or it would win about 4% more games. This means that there is no real change between a home game and an away game for Cincinnati, thus it doesn't have a large home field advantage. Boston and the New York Yankees also have low estimates, however, both teams' confidence intervals cross 0, which means their estimate isn't significant.
+    The Boston Red Sox have the lowest positive estimate at about .59. This means for all games in our analysis, if Boston played every away game as a home game, its winning percentage would increase by about .59, or it would win about 6% more games. This means that there is a slight change between a home game and an away game for Boston, thus it doesn't have the largest home field advantage. Cincinnati and the Chicago White Sox also have low estimates, suggesting that both teams also have less significant home field advantage than others. 
 
-    Similar to our ATT analysis, the Cubs ATC estimate is also an interesting case and is the only negative estimate in our analysis. Its estimate is about -.1. We can interpret it as if the Cubs played every away game at home, meaning all 162 games were played at home, the Cubs would win about 10% fewer games. This is very significant, suggesting that the Cubs don't have a significant home field advantage. 
+    The Cubs ATC estimate is also an interesting case and is the only negative estimate in our analysis. Its estimate is about .72. We can interpret it as if the Cubs played every away game at home, meaning all 162 games were played at home, the Cubs would win about 7% more games. However, the Cubs confidence interval crosses 0, which makes their estimates insignificant, which means it doesn't have significant home field advantage. 
 
     Like the ATT, we're going to apply these estimates to the 2023 season, the last season in our data. Below is a plot of the teams in the National League and the total wins for each team as well as their total wins if we applied the ATC estimate. Similar to the ATT, we calculated the ATC estimated wins, or total wins if every game is treated, by finding the winning percentage for each team's away games and adding the estimate from that number. We then multiplied the new percentage by 81 and rounded to the nearest win to get the new number of away wins. Finally, we then added that number to the home wins to get the total wins if every game was treated. Below is the plot showing what the National League standings would have looked like if every game was treated, and includes the original wins as well. 
 
@@ -274,7 +271,7 @@ MLB_wins_ATC2023<-ATC_results %>%
   mutate(Atc_total_wins = round((81 * ATC_away_wpct) + Home.Wins))
 
 MLB_wins_ATC2023 %>%
-  filter(League == "NL") %>% 
+  filter(League == "AL") %>% 
   arrange(desc(Atc_total_wins)) %>%  # Arrange by ATT wins in descending order
   mutate(Team = factor(Team, levels = rev(unique(Team)))) %>%  # Reorder factor levels
   ggplot() +  
@@ -293,11 +290,11 @@ MLB_wins_ATC2023 %>%
 
 ```
 
-    Our results indicate that for the ATC, home field advantage has somewhat of an effect on the 2023 standings. In this scenario, teams that were on the bubble of making the playoffs, such as Miami or San Diego, would have made the playoffs in this situation. As mentioned above, the Cubs had a negative estimate and dropped significantly in these standings as a result of our analysis. The Cubs were on the cusp of a playoff berth and would've finished second to last as a result of our analysis. These results have a larger difference in standings when analyzing the ATT, and show that playing every game at home can have more of an effect on the 2023 standings. 
+    Our results indicate that for the ATC, home field advantage has somewhat of an effect on the 2023 standings. In this scenario, teams that were on the bubble of making the playoffs, such as Toronto, would have convincingly made the playoffs in this situation. Tampa Bay also overtook the Orioles for the top seed in the playoffs which would give the Orioles home field advantage throughout the playoffs. These results have a larger difference in standings when analyzing the ATT, and show that playing every game at home can have more of an effect on the 2023 standings. These results also show how playing every away game as a home game can change the standings, and award a team with home field advantage throughout the duration of the playoffs. 
 
 ### Sensitivity Analysis
 
-    To complete our sensitivity analysis, we ran a for loop on every team to calculate how many home wins, away wins, home losses, and away losses. Below is are plots of teams with the six largest and smallest estimated e-value.
+    To complete our sensitivity analysis, we ran a for loop on every team to calculate how many home wins, away wins, home losses, and away losses. An E-value is a measure used in sensitivity analysis to quantify the strength of an unmeasured confounder that would need to exist in order to fully explain away an observed causal effect, indicating how robust the findings are to potential hidden biases. Below are plots of teams with the six largest and smallest estimated e-values.
 
 ```{r}
 evalues_table %>% 
@@ -309,13 +306,29 @@ evalues_table %>%
   head()
 ```
 
-    Colorado has the highest e-value at around 2.1 which means that the degree to which our analysis could be affected by a confounding variable is lower for them. This makes sense as well because the park is known to provide an advantage to hitters due to elevation and ball flight. Boston on the other hand has the lowest e-value at 1.44 which may suggest that our estimation and analysis for them is more sensitive to confounding variables. For Boston specifically, their park layout with the green monster may confound in addition to other variables. The mean e-value for every team in the data set is 1.6 which could be better and may suggest that there are uncounted variables that influence the relationship between winning and playing at home.
+    Colorado has the highest e-value at around 2.1 which means that the degree to which our analysis could be affected by a confounding variable is lower for them. This makes sense as well because the park is known to provide an advantage to hitters due to elevation and ball flight. Boston on the other hand has the lowest e-value at 1.45 which may suggest that our estimation and analysis for them is more sensitive to confounding variables. For Boston specifically, their park layout with the green monster may confound in addition to other variables. The mean e-value for every team in the data set is 1.6 which could be better and may suggest that there are uncounted variables that influence the relationship between winning and playing at home.
+
+## Limitations and Next Steps
+
+    One limitation of this study is the lack of weather data, which could have provided valuable insight into how environmental factors impact home field advantage. Additionally, insufficient umpire matching may have introduced some bias into the analysis, as umpire decisions can influence game outcomes.
+
+    Future research could benefit from separating analyses by year to account for changes in team performance or external factors over time. Another potential direction is creating a Home Field Advantage (HFA) metric that quantifies the precise increase in win percentage for each team. Expanding the analysis to include other major sports leagues could also provide a broader understanding of home field advantage across different competitive contexts.
 
 ## Conclusions
 
-    Looking at our results, playing at home does seem to provide a distinct advantage for several MLB teams, as evidenced by a significant increase in win percentage for about half of the league. Notably, teams with historically distinct home fields, such as Colorado (COL), Toronto (TOR), and New York Yankees (NYA), show a higher win percentage, suggesting that home field advantage may be influenced by factors like unique stadium features. However, certain teams, like the Reds and Cubs, did not demonstrate statistically significant improvements, possibly due to difficulty in matching or other external factors. The results may also be sensitive to confounding variables such as weather conditions, umpire crew, and stadium layout, though the average effect size (E-Value) suggests the impact of these confounders is relatively small. Overall, while there is some clear evidence of home-field advantage, further investigation is needed to refine the analysis and control for additional variables that could influence outcomes.
+![Las Vegas A's New Stadium (Al Yellon)](oakland.jpeg)
+
+    The future of baseball and the fan experience remains uncertain, as teams continue to innovate and transform how fans engage with the game. For instance, the Oakland A’s are incorporating a shopping mall within their new stadium, a change that could influence home field advantage in unforeseen ways.
+
+    Our analysis of home field advantage in Major League Baseball (MLB) reveals a clear advantage for many teams, with about half of the league experiencing a significant increase in win percentage when playing at home. Teams like the Colorado Rockies, Toronto Blue Jays, and New York Yankees, which feature historically distinct ballparks, show a higher win percentage, likely due to unique stadium characteristics such as elevation, ballpark design, and environmental conditions. These teams benefit more from home field advantage, demonstrating a notable shift in performance when playing at home compared to away games.
+
+    However, certain teams, such as the Cincinnati Reds and Chicago Cubs, show no significant home field advantage. This lack of impact may be attributed to challenges in matching teams effectively for the analysis or other confounding factors. The Cubs' analysis, for example, presented difficulties with unmatched cases, which may have influenced the results. Sensitivity analysis suggests that the findings are vulnerable to unmeasured confounders, though the average E-value across teams is not excessively high, indicating that the results are generally robust. Still, external factors such as weather, umpire crew, and stadium layout remain influential.
+
+    Our findings further emphasize that home field advantage is not a universal benefit across MLB teams. Environmental factors like Colorado's unique altitude and ballpark conditions play a significant role, while other teams derive more benefit from fan support, familiar surroundings, and local team dynamics. While home field advantage does contribute to team success, its impact varies widely across the league. These results underscore that the degree of home field advantage is shaped by a variety of factors, providing valuable insights into how such dynamics influence a team's performance. This study lays the foundation for further research into the intricate role that home field advantage plays in shaping competitive outcomes in sports.
 
 ## Works Cited 
+
+Bleed Cubbie Blue. (2024, March 7). Oakland Athletics new stadium renderings. Bleed Cubbie Blue.     https://www.bleedcubbieblue.com/2024/3/7/24093196/oakland-athletics-new-stadium-renderings
 
 Boyd, David W., and Laura A. Boyd. “The home field advantage: Implications for the pricing of     tickets to professional team sporting events.” Journal of Economics and Finance, vol. 22, no.     2–3, June 1998, pp. 169–179, https://doi.org/10.1007/bf02771486.
 
@@ -332,4 +345,4 @@ Sports, Open Source. “Baseball Databank.” Kaggle, 17 Nov. 2019,     www.
 
 ## Code Appendix
 
-    All code and data to reproduce these visuals and analysis can be found in the `Analysis.qmd`, `data.qmd`, and  `SensAnalysis.qmd` files linked in our GitHub Repo. 
+    All code and data to reproduce these visuals and analysis can be found in the `Analysis.qmd`, `data.qmd`, and  `SensAnalysis.qmd` files linked in our GitHub Repo (https://github.com/Jposner33/Causal_Inference_Final_Macalester). 
