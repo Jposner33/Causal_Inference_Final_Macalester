@@ -1,0 +1,505 @@
+```{r}
+library(dplyr)
+library(tidyverse)
+library(ggplot2)
+library(tidyverse)
+library(broom)
+library(MatchIt)
+library(marginaleffects)
+library(dagitty)
+library(scales)
+library(readr)
+library(stringr)
+library(cobalt)
+library(viridis)
+```
+
+# For loop for ATT for all teams 
+
+```{r}
+team_files <- list(
+  ANA = "Data/Team Datasets/ANA_games.csv",
+  DET = "Data/Team Datasets/DET_games.csv",
+  KCA = "Data/Team Datasets/KCA_games.csv",
+  PHI = "Data/Team Datasets/PHI_games.csv",
+  WAS = "Data/Team Datasets/WAS_games.csv",
+  BOS = "Data/Team Datasets/BOS_games.csv",
+  CIN = "Data/Team Datasets/CIN_games.csv",
+  SDN = "Data/Team Datasets/SDN_games.csv",
+  SFN = "Data/Team Datasets/SFN_games.csv",
+  SLN = "Data/Team Datasets/SLN_games.csv",
+  CLE = "Data/Team Datasets/CLE_games.csv",
+  HOU = "Data/Team Datasets/HOU_games.csv",
+  MIA = "Data/Team Datasets/MIA_games.csv",
+  MIL = "Data/Team Datasets/MIL_games.csv",
+  ARI = "Data/Team Datasets/ARI_games.csv",
+  NYA = "Data/Team Datasets/NYA_games.csv",
+  OAK = "Data/Team Datasets/OAK_games.csv",
+  SEA = "Data/Team Datasets/SEA_games.csv",
+  TBA = "Data/Team Datasets/TBA_games.csv",
+  TEX = "Data/Team Datasets/TEX_games.csv",
+  ATL = "Data/Team Datasets/ATL_games.csv",
+  BAL = "Data/Team Datasets/BAL_games.csv",
+  CHA = "Data/Team Datasets/CHA_games.csv",
+  MIN = "Data/Team Datasets/MIN_games.csv",
+  TOR = "Data/Team Datasets/TOR_games.csv",
+  CHN = "Data/Team Datasets/CHN_games.csv",
+  COL = "Data/Team Datasets/COL_games.csv",
+  LAN = "Data/Team Datasets/LAN_games.csv",
+  NYN = "Data/Team Datasets/NYN_games.csv",
+  PIT = "Data/Team Datasets/PIT_games.csv"
+)
+```
+
+```{r}
+# Load required packages
+library(dplyr)
+library(MatchIt)
+library(marginaleffects)
+
+# Initialize an empty list to store the results for each team
+all_results <- list()
+
+# Iterate over team abbreviations and their data files
+for (abbr in names(team_files)) {
+  # Read the data for the current team
+  team_data <- read.csv(team_files[[abbr]])
+  
+    # Remove rows with missing values in covariates
+  team_data <- team_data %>%
+    filter(
+      !is.na(Opp_Win_P_Cat),
+      !is.na(Opp_Playoffs),
+      !is.na(Opp_WS),
+      !is.na(Dow),
+      !is.na(Day_Night),
+      !is.na(Away_SP_WAR), 
+      !is.na(Home_SP_WAR)
+    )
+  
+  # Skip if the filtered dataset is too small
+  if (nrow(team_data) < 10) { # Adjust the threshold as needed
+    cat("Skipping team:", abbr, "- Not enough data after filtering\n")
+    next
+  }
+  
+  # Matching Method for ATT
+  match_out_full <- matchit(
+    Home ~ Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night + Away_SP_WAR + Home_SP_WAR,
+    data = team_data,
+    method = "full",
+    exact = ~ Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night,
+    distance = "glm",
+    estimand = "ATT"
+  )
+  
+  # Print balance table (optional, for debugging/validation)
+  cat("\nBalance Table for", abbr, ":\n")
+  print(bal.tab(match_out_full))
+  
+  # Summary and plot (optional, for diagnostics)
+  match_out_full_summ <- summary(match_out_full, interactions = TRUE)
+  plot(match_out_full_summ)  # Plot diagnostic information
+  
+  # Extract matched data
+  match_data_full <- match.data(match_out_full)
+  
+  # Dynamically construct the dependent variable name
+  dependent_var <- paste0(abbr, "_win")
+  
+  # Construct the formula dynamically
+  formula_str <- paste0(dependent_var, " ~ Home * (Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night + Away_SP_WAR + Home_SP_WAR)")
+  formula <- as.formula(formula_str)
+  
+  # Regression model based on matched data
+  mod2 <- lm(formula, data = match_data_full, weights = weights)
+  
+  
+  # Estimating ATT from the model
+  att_results <- avg_comparisons(
+    mod2,
+    variables = "Home",
+    vcov = ~subclass,
+    newdata = filter(match_data_full, Home == 1)
+  )
+  
+  # Add the team abbreviation to the results
+  att_results <- att_results %>% mutate(Team = abbr)
+  
+  # Store results in the list
+  all_results[[abbr]] <- att_results
+}
+
+# Combine all team-specific results into a single data frame
+final_results <- bind_rows(all_results)
+
+# Display the combined results
+print(final_results)
+
+```
+
+# add the team name to each row
+```{r}
+team_names <- c(
+  "ANA", "DET", "KCA", "PHI", "WAS", 
+  "BOS", "CIN", "SDN", "SFN", "SLN", 
+  "CLE", "HOU", "MIA", "MIL", "ARI", 
+  "NYA", "OAK", "SEA", "TBA", "TEX", 
+  "ATL", "BAL", "CHA", "MIN", "TOR", 
+  "CHN", "COL", "LAN", "NYN", "PIT"
+)
+final_results$Team <- team_names
+ATT_results <- as.data.frame(final_results) %>% 
+  select(Team, estimate, std.error, statistic, conf.low, conf.high, s.value, predicted_lo, predicted_hi, predicted) %>% 
+  mutate(CI_Crosses_Zero = if_else(conf.low <= 0 & conf.high >= 0, TRUE, FALSE))
+ATT_results
+```
+
+
+# For loop for ATC with all results stored
+
+```{r}
+# Initialize an empty list to store the results for each team
+all_results <- list()
+
+# Iterate over team abbreviations and their data files
+for (abbr in names(team_files)) {
+  # Read the data for the current team
+  team_data <- read.csv(team_files[[abbr]])
+  
+  # Remove rows with missing values in covariates
+  team_data <- team_data %>%
+    filter(
+      !is.na(Opp_Win_P_Cat),
+      !is.na(Opp_Playoffs),
+      !is.na(Opp_WS),
+      !is.na(Dow),
+      !is.na(Day_Night), 
+      !is.na(Away_SP_WAR), 
+      !is.na(Home_SP_WAR)
+    )
+  
+  # Skip if the filtered dataset is too small
+  if (nrow(team_data) < 10) { # Adjust the threshold as needed
+    cat("Skipping team:", abbr, "- Not enough data after filtering\n")
+    next
+  }
+  
+  # Matching Method for ATC
+  match_out_full_ATC <- matchit(
+    Home ~ Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night + Away_SP_WAR + Home_SP_WAR,
+    data = team_data,
+    method = "full",
+    exact = ~ Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night,
+    distance = "glm",
+    estimand = "ATC"
+  )
+  
+  # Print balance table (optional, for debugging/validation)
+  cat("\nBalance Table for", abbr, ":\n")
+  print(bal.tab(match_out_full_ATC))
+  
+  # Summary and plot (optional, for diagnostics)
+  match_out_full_summ <- summary(match_out_full_ATC, interactions = TRUE)
+  plot(match_out_full_summ)  # Plot diagnostic information
+  
+  # Extract matched data
+  match_data_full_ACT <- match.data(match_out_full_ATC)
+  
+  # Dynamically construct the dependent variable name
+  dependent_var <- paste0(abbr, "_win")
+  
+  # Construct the formula dynamically
+  formula_str <- paste0(dependent_var, " ~ Home * (Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night + Away_SP_WAR + Home_SP_WAR)")
+  formula <- as.formula(formula_str)
+  
+  # Regression model based on matched data
+  mod2 <- lm(formula, data = match_data_full_ACT, weights = weights)
+  
+  # Estimating ATC from the model
+  atc_results <- avg_comparisons(
+    mod2,
+    variables = "Home",
+    vcov = ~subclass,
+    newdata = filter(match_data_full, Home == 0)
+  )
+  
+  # Add the team abbreviation to the results
+  atc_results <- atc_results %>% mutate(Team = abbr)
+  
+  # Store results in the list
+  all_results[[abbr]] <- atc_results
+}
+
+# Combine all team-specific results into a single data frame
+final_results2 <- bind_rows(all_results)
+
+# Display the combined results
+print(final_results2)
+
+```
+
+# add the team name to each row
+```{r}
+team_names <- c(
+  "ANA", "DET", "KCA", "PHI", "WAS", 
+  "BOS", "CIN", "SDN", "SFN", "SLN", 
+  "CLE", "HOU", "MIA", "MIL", "ARI", 
+  "NYA", "OAK", "SEA", "TBA", "TEX", 
+  "ATL", "BAL", "CHA", "MIN", "TOR", 
+  "CHN", "COL", "LAN", "NYN", "PIT"
+)
+final_results2$Team <- team_names
+ATC_results <- as.data.frame(final_results2) %>% 
+  select(Team, estimate, std.error, statistic, conf.low, conf.high, s.value, predicted_lo, predicted_hi, predicted) %>% 
+  mutate(CI_Crosses_Zero = if_else(conf.low <= 0 & conf.high >= 0, TRUE, FALSE))
+ATC_results
+```
+
+# For loop for ATE with all results stored
+
+```{r}
+# Initialize an empty list to store the results for each team
+all_results <- list()
+
+# Iterate over team abbreviations and their data files
+for (abbr in names(team_files)) {
+  # Read the data for the current team
+  team_data <- read.csv(team_files[[abbr]])
+  
+  # Remove rows with missing values in covariates
+  team_data <- team_data %>%
+    filter(
+      !is.na(Opp_Win_P_Cat),
+      !is.na(Opp_Playoffs),
+      !is.na(Opp_WS),
+      !is.na(Dow),
+      !is.na(Day_Night), 
+      !is.na(Away_SP_WAR), 
+      !is.na(Home_SP_WAR)
+    )
+  
+  # Skip if the filtered dataset is too small
+  if (nrow(team_data) < 10) { # Adjust the threshold as needed
+    cat("Skipping team:", abbr, "- Not enough data after filtering\n")
+    next
+  }
+  
+  # Matching Method for ATC
+  match_out_full_ATE <- matchit(
+    Home ~ Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night + Away_SP_WAR + Home_SP_WAR,
+    data = team_data,
+    method = "full",
+    exact = ~ Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night,
+    distance = "glm",
+    estimand = "ATE"
+  )
+  
+  # Print balance table (optional, for debugging/validation)
+  #cat("\nBalance Table for", abbr, ":\n")
+  # print(bal.tab(match_out_full_ATC))
+  
+  # Summary and plot (optional, for diagnostics)
+  #match_out_full_summ <- summary(match_out_full_ATE, interactions = TRUE)
+  #plot(match_out_full_summ)  # Plot diagnostic information
+  
+  # Extract matched data
+  match_data_full_ATE <- match.data(match_out_full_ATE)
+  
+  # Dynamically construct the dependent variable name
+  dependent_var <- paste0(abbr, "_win")
+  
+  # Construct the formula dynamically
+  formula_str <- paste0(dependent_var, " ~ Home * (Opp_Win_P_Cat + Opp_Playoffs + Opp_WS + Dow + Day_Night + Away_SP_WAR + Home_SP_WAR)")
+  formula <- as.formula(formula_str)
+  
+  # Regression model based on matched data
+  mod2 <- lm(formula, data = match_data_full_ATE, weights = weights)
+  
+  # Estimating ATC from the model
+  ate_results <- avg_comparisons(
+    mod2,
+    variables = "Home",
+    vcov = ~subclass
+  )
+  
+  # Add the team abbreviation to the results
+  ate_results <- ate_results %>% mutate(Team = abbr)
+  
+  # Store results in the list
+  all_results[[abbr]] <- ate_results
+}
+
+# Combine all team-specific results into a single data frame
+final_results3 <- bind_rows(all_results)
+
+# Display the combined results
+print(final_results3)
+
+```
+
+# add the team name to each row
+```{r}
+team_names <- c(
+  "ANA", "DET", "KCA", "PHI", "WAS", 
+  "BOS", "CIN", "SDN", "SFN", "SLN", 
+  "CLE", "HOU", "MIA", "MIL", "ARI", 
+  "NYA", "OAK", "SEA", "TBA", "TEX", 
+  "ATL", "BAL", "CHA", "MIN", "TOR", 
+  "CHN", "COL", "LAN", "NYN", "PIT"
+)
+final_results3$Team <- team_names
+ATE_results <- as.data.frame(final_results3) %>% 
+  select(Team, estimate, std.error, statistic, conf.low, conf.high, s.value, predicted_lo, predicted_hi, predicted) %>% 
+  mutate(CI_Crosses_Zero = if_else(conf.low <= 0 & conf.high >= 0, TRUE, FALSE))
+ATE_results
+```
+
+# Writing .csv files for all information
+```{r}
+write.csv(ATE_results, "ATE_results.csv", row.names = FALSE)
+write.csv(ATT_results, "ATT_results.csv", row.names = FALSE)
+write.csv(ATC_results, "ATC_results.csv", row.names = FALSE)
+```
+
+# Example ATT plots
+```{r}
+ggplot(ATT_results)+
+  geom_linerange(aes(xmin = conf.low, xmax = conf.high, , y = Team, color = CI_Crosses_Zero))+
+  geom_point(aes(x=estimate, y=Team))+
+  labs(x = "Estimate (ATT)", y = "Team (Abv)", title = "Team ATT Estimates with Confidence Intervals", color = "Conf. Interval")+
+  scale_color_viridis_d(option = "D")+
+  theme_minimal()
+```
+
+
+```{r}
+# ATT viz
+
+MLB_wins2023<-read.csv("Data/MLB_2023_Team_Records.csv") %>% 
+  rename(Team = Abbreviation)
+
+MLB_wins_ATT2023<-ATT_results %>% 
+  left_join(MLB_wins2023) %>% 
+  mutate(total_wins = Home.Wins + Away.Wins) %>% 
+  mutate(home_wpct = Home.Wins/(Home.Wins+Home.Losses)) %>% 
+  mutate(away_wpct = Away.Wins/(Away.Wins+Away.Losses)) %>% 
+  mutate(ATT_home_wpct = home_wpct - estimate) %>%  
+  mutate(Att_total_wins = round((81 * ATT_home_wpct) + Away.Wins))
+  
+
+MLB_wins_ATT2023 %>%
+  filter(League == "AL") %>% 
+  arrange(desc(Att_total_wins)) %>%  # Arrange by ATT wins in descending order
+  mutate(Team = factor(Team, levels = rev(unique(Team)))) %>%  # Reorder factor levels
+  ggplot() +
+  geom_col(aes(x = total_wins, y = Team, fill = "Actual Wins"), alpha = 0.7) + 
+  geom_col(aes(x = Att_total_wins, y = Team, fill = "Wins if All Games Untreated"), alpha = 0.7) +
+  scale_fill_manual(
+    name = "Win Category",
+    values = c("Wins if All Games Untreated" = viridis(2)[1], "Actual Wins" = viridis(2)[2])
+  ) +
+  labs(
+    title = "Total Wins vs. If All Games Untreated in 2023 for AL Teams",
+    x = "Wins",
+    y = "Team"
+  ) +
+  theme_minimal()
+
+
+MLB_wins_ATT2023 %>%
+  filter(League == "NL") %>% 
+  arrange(desc(Att_total_wins)) %>%  # Arrange by ATT wins in descending order
+  mutate(Team = factor(Team, levels = rev(unique(Team)))) %>%  # Reorder factor levels
+  ggplot() +
+  geom_col(aes(x = total_wins, y = Team, fill = "Actual Wins"), alpha = 0.7) + 
+  geom_col(aes(x = Att_total_wins, y = Team, fill = "Wins if All Games Untreated"), alpha = 0.7) +
+  scale_fill_manual(
+    name = "Win Category",
+    values = c("Wins if All Games Untreated" = viridis(2)[1], "Actual Wins" = viridis(2)[2])
+  ) +
+  labs(
+    title = "Total Wins vs. If All Games Untreated in 2023 for NL Teams",
+    x = "Wins",
+    y = "Team"
+  ) +
+  theme_minimal()
+
+```
+
+# Example Atc plots 
+
+```{r}
+# ATC viz
+
+MLB_wins2023<-read.csv("Data/MLB_2023_Team_Records.csv") %>% 
+  rename(Team = Abbreviation)
+
+MLB_wins_ATC2023<-ATC_results %>% 
+  left_join(MLB_wins2023) %>% 
+  mutate(total_wins = Home.Wins + Away.Wins) %>% 
+  mutate(home_wpct = Home.Wins/(Home.Wins+Home.Losses)) %>% 
+  mutate(away_wpct = Away.Wins/(Away.Wins+Away.Losses)) %>% 
+  mutate(ATC_away_wpct = away_wpct + estimate) %>% 
+  mutate(Atc_total_wins = round((81 * ATC_away_wpct) + Home.Wins))
+  
+
+MLB_wins_ATC2023 %>%
+  filter(League == "AL") %>% 
+  arrange(desc(Atc_total_wins)) %>%  # Arrange by ATT wins in descending order
+  mutate(Team = factor(Team, levels = rev(unique(Team)))) %>%  # Reorder factor levels
+  ggplot() +  
+  geom_col(aes(x = Atc_total_wins, y = Team, fill = "Wins if All Games Treated"), alpha = 0.7) +
+  geom_col(aes(x = total_wins, y = Team, fill = "Actual Wins"), alpha = 0.7) + 
+  scale_fill_manual(
+    name = "Win Category",
+    values = c("Wins if All Games Treated" = viridis(2)[1], "Actual Wins" = viridis(2)[2])
+  ) +
+  labs(
+    title = "Total Wins vs. If All Games Treated in 2023 for AL Teams",
+    x = "Wins",
+    y = "Team"
+  ) +
+  theme_minimal()
+
+
+MLB_wins_ATC2023 %>%
+  filter(League == "NL") %>% 
+  arrange(desc(Atc_total_wins)) %>%  # Arrange by ATT wins in descending order
+  mutate(Team = factor(Team, levels = rev(unique(Team)))) %>%  # Reorder factor levels
+  ggplot() +  
+  geom_col(aes(x = Atc_total_wins, y = Team, fill = "Wins if All Games Treated"), alpha = 0.7) +
+  geom_col(aes(x = total_wins, y = Team, fill = "Actual Wins"), alpha = 0.7) + 
+  scale_fill_manual(
+    name = "Win Category",
+    values = c("Wins if All Games Treated" = viridis(2)[1], "Actual Wins" = viridis(2)[2])
+  ) +
+  labs(
+    title = "Total Wins vs. If All Games Treated in 2023 for NL Teams",
+    x = "Wins",
+    y = "Team"
+  ) +
+  theme_minimal()
+
+```
+
+```{r}
+ggplot(ATC_results)+
+  geom_linerange(aes(xmin = conf.low, xmax = conf.high, , y = Team, color = CI_Crosses_Zero))+
+  geom_point(aes(x=estimate, y=Team))+
+  labs(x = "Estimate (ATT)", y = "Team (Abv)", title = "Team ATT Estimates with Confidence Intervals", color = "Conf. Interval")+
+  scale_color_viridis_d(option = "D")+
+  theme_minimal()
+```
+
+```{r}
+MLB_wins_ATC2023 %>% 
+  mutate(difference = total_wins - Atc_total_wins) %>% 
+  ggplot()+
+  geom_col(aes(x = difference, y = Team, fill = CI_Crosses_Zero))+
+  labs(x = "Estimate Fewer Wins in 2023 if All Games Treated", y = "Team (Abv)", title = "Team Estimated Wins if All Games Treated in 2023", fill = "Conf. Interval Crosses 0")+
+  scale_x_continuous(breaks = scales::pretty_breaks(n = 13)) +
+  scale_fill_viridis_d(option = "D")+
+  theme_minimal()
+
+```

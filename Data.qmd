@@ -1,6 +1,5 @@
 ---
 title: "Baseball Data Select" 
-author: "Group"
 date: "`r Sys.Date()`"
 output: html_document
 ---
@@ -16,6 +15,9 @@ library(dplyr)
 baseball_full <- read.csv("Data/Retrosheet.csv")
 
 team_win <- read.csv("Data/Season Results.csv")
+
+pitcher_war <- read.csv("Data/Pitcher WAR final.csv") %>%
+  select(-ID)
 
 baseball_setup <- subset(baseball_full, Year != 2020 & Year != 2021)
 
@@ -37,11 +39,39 @@ baseball_setup_w_both <- left_join(baseball_setup_w_away, team_win, by = c("Year
     Home_Win_P_Cat = Win_P_Cat
   )
 
-baseball_allmlb_final <- baseball_setup_w_both %>% #Changing California Angels to ANA Angels
+baseball_allmlb_wcontrols <- baseball_setup_w_both %>% #Changing California Angels to ANA Angels
   mutate(
     Team_Winner = gsub("CAL", "ANA", Team_Winner),
     Away_Team = gsub("CAL", "ANA", Away_Team),
     Home_Team = gsub("CAL", "ANA", Home_Team)
+  )
+
+baseball_allmlb_wcontrols$Away_SP_Name <- ifelse(baseball_allmlb_wcontrols$Away_SP_Name == "Kendry MIAres", "Kendry Flores",
+                                                 ifelse(baseball_allmlb_wcontrols$Away_SP_Name == "Gavin MIAyd", "Gavin Floyd", baseball_allmlb_wcontrols$Away_SP_Name))
+
+baseball_allmlb_wcontrols$Away_SP_Name <- ifelse(baseball_allmlb_wcontrols$Away_SP_Name == "Randy MIAres", "Randy Flores",
+                                                 ifelse(baseball_allmlb_wcontrols$Away_SP_Name == "Bryce MIArie", "Bryce Florie", baseball_allmlb_wcontrols$Away_SP_Name))
+
+baseball_allmlb_wcontrols$Home_SP_Name <- ifelse(baseball_allmlb_wcontrols$Home_SP_Name == "Kendry MIAres", "Kendry Flores",
+                                                 ifelse(baseball_allmlb_wcontrols$Home_SP_Name == "Gavin MIAyd", "Gavin Floyd", baseball_allmlb_wcontrols$Home_SP_Name))
+
+baseball_allmlb_wcontrols$Home_SP_Name <- ifelse(baseball_allmlb_wcontrols$Home_SP_Name == "Randy MIAres", "Randy Flores",
+                                                 ifelse(baseball_allmlb_wcontrols$Home_SP_Name == "Bryce MIArie", "Bryce Florie", baseball_allmlb_wcontrols$Home_SP_Name))
+
+baseball_allmlb_wcontrols$Winning_Pitcher_Name <- ifelse(baseball_allmlb_wcontrols$Winning_Pitcher_Name == "Kendry MIAres", "Kendry Flores",
+                                                 ifelse(baseball_allmlb_wcontrols$Winning_Pitcher_Name == "Gavin MIAyd", "Gavin Floyd", baseball_allmlb_wcontrols$Winning_Pitcher_Name))
+
+baseball_allmlb_wcontrols$Winning_Pitcher_Name <- ifelse(baseball_allmlb_wcontrols$Winning_Pitcher_Name == "Randy MIAres", "Randy Flores",
+                                                 ifelse(baseball_allmlb_wcontrols$Winning_Pitcher_Name == "Bryce MIArie", "Bryce Florie", baseball_allmlb_wcontrols$Winning_Pitcher_Name))
+
+baseball_allmlb_waway <- left_join(baseball_allmlb_wcontrols, pitcher_war, by = c("Year" = "Year", "Away_SP_Name" = "Name")) %>%
+  rename(
+    Away_SP_WAR = WAR
+  )
+
+baseball_allmlb_final <- left_join(baseball_allmlb_waway, pitcher_war, by = c("Year" = "Year", "Home_SP_Name" = "Name")) %>%
+  rename(
+    Home_SP_WAR = WAR
   )
 
 team_names <- unique(baseball_allmlb_final$Team_Winner)
@@ -60,8 +90,8 @@ for (team in team_names) {
            )
   assign(df_name, team_data)
   ###
-  # file_path <- paste0("~/Desktop/Senior Year Work/Causal Inference/Clean Data/Team Datasets", "/", df_name, ".csv")
-  # write.csv(team_data, file_path, row.names = FALSE)
+  file_path <- paste0("Data/Team Datasets", "/", df_name, ".csv")
+  write.csv(team_data, file_path, row.names = FALSE)
 }
 
 # write_csv(baseball_allmlb_final, "~/Desktop/Senior Year Work/Causal Inference/Clean Data/Baseball_allmlb_Clean.csv")
