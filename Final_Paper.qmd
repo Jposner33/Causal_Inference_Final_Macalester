@@ -328,7 +328,7 @@ evalues_table %>%
 
 ## Works Cited 
 
-Bleed Cubbie Blue. (2024, March 7). Oakland Athletics new stadium renderings. Bleed Cubbie Blue.     https://www.bleedcubbieblue.com/2024/3/7/24093196/oakland-athletics-new-stadium-renderings
+Bleed Cubbie Blue. (2024, March 7). Oakland Athletics new stadium renderings. Bleed Cubbie Blue. https://www.bleedcubbieblue.com/2024/3/7/24093196/oakland-athletics-new-stadium-renderings
 
 Boyd, David W., and Laura A. Boyd. “The home field advantage: Implications for the pricing of tickets to professional team sporting events.” Journal of Economics and Finance, vol. 22, no. 2–3, June 1998, pp. 169–179, https://doi.org/10.1007/bf02771486.
 
