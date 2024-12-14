@@ -1,5 +1,5 @@
 ---
-title: "The Reality of home field Advantage"
+title: "The Reality of Home Field Advantage"
 subtitle: "Quantifying the Effect of Playing at Home in Major League Baseball"
 authors: "Jacob Posner, Evan Burns, Bowman Wingard, Cameron Latvis"
 format: 
